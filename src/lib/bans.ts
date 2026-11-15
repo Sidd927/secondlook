@@ -53,7 +53,7 @@ const RULES: BanRule[] = [
     summary:
       "Since June 28, 2011, full-size and non-full-size cribs must meet federal standards that effectively ended drop-side designs. Selling, reselling or donating a crib that doesn't meet them is illegal. That includes garage sales and online listings.",
     law: "16 CFR parts 1219 and 1220 (crib safety standards, effective June 28, 2011)",
-    sourceUrl: "https://www.cpsc.gov/Business--Manufacturing/Business-Education/Business-Guidance/Full-Size-Baby-Cribs-and-Non-Full-Size-Baby-Cribs",
+    sourceUrl: "https://www.cpsc.gov/Business--Manufacturing/Business-Education/Business-Guidance/Full-Size-Baby-Cribs",
     any: [/\bdrop\s*-?\s*side\b.*\bcrib\b/, /\bcrib\b.*\bdrop\s*-?\s*side\b/, /\bdropside\b/],
   },
   {
@@ -63,7 +63,7 @@ const RULES: BanRule[] = [
     summary:
       "Cribs made before June 28, 2011 are very likely to fail the current federal crib standard, and selling a noncompliant crib is illegal. Ask the seller for the manufacture date printed on the crib's label.",
     law: "16 CFR parts 1219 and 1220 (crib safety standards, effective June 28, 2011)",
-    sourceUrl: "https://www.cpsc.gov/Business--Manufacturing/Business-Education/Business-Guidance/Full-Size-Baby-Cribs-and-Non-Full-Size-Baby-Cribs",
+    sourceUrl: "https://www.cpsc.gov/Business--Manufacturing/Business-Education/Business-Guidance/Full-Size-Baby-Cribs",
     any: [/\bcrib\b.*\b(19[89]\d|200\d|2010)\b/, /\b(19[89]\d|200\d|2010)\b.*\bcrib\b/, /\bvintage\b.*\bcrib\b|\bcrib\b.*\bvintage\b|\bantique\b.*\bcrib\b/],
   },
   {
