@@ -3,8 +3,8 @@ import { Checker } from "@/components/Checker";
 
 const FACTS = [
   {
-    figure: "≈6%",
-    text: "On average, that's the share of recalled products consumers actually return or get fixed. The rest stay in homes, and then get resold.",
+    figure: "≈1 in 3",
+    text: "Recalled units never refunded, replaced or repaired, even counting retailers and manufacturers (65% overall correction rate across 865 closed CPSC recalls, FY2014–2016).",
     source: "CPSC Recall Effectiveness Workshop report, 2018",
     href: "https://www.cpsc.gov/s3fs-public/Recall_Effectiveness_Workshop_Report-2018.pdf",
   },

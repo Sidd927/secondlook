@@ -13,7 +13,7 @@ Upload college aid offers; extract grants vs. loans; compute the true net price.
 
 ### 2. Household recall sweep from purchase history
 Import Amazon/Walmart order history and flag recalled products you own.
-- **Verified problem:** the consumer recall response rate is ≈6% (CPSC 2017 workshop / 2018 report).
+- **Verified problem:** CPSC's 2018 report gives a 65% overall correction rate (FY2014–16, 865 recalls). (A ≈6% consumer-response figure from the 2017 workshop slides was later found ambiguous and is not used.)
 - **Verified competition:** RecallDefense already imports Amazon/Walmart CSVs and receipts. Kept, CoverKeep and RecallSentry do inventory matching.
 
 ### 3. Secondhand listing safety check (SecondLook)

@@ -16,7 +16,7 @@ Built for [IceHacks 2026](https://icehacks.devpost.com/).
 
 A recall stops new sales. It doesn't stop resales.
 
-- On average, consumers return or fix only **about 6%** of recalled products ([CPSC Recall Effectiveness Workshop report, 2018](https://www.cpsc.gov/s3fs-public/Recall_Effectiveness_Workshop_Report-2018.pdf)). The rest stay in homes, and then end up on Facebook Marketplace, Craigslist and garage-sale tables.
+- Across 865 closed CPSC recalls (FY2014–2016), the overall correction rate was **65%**, even counting corrections by manufacturers, distributors and retailers. Roughly **1 in 3 recalled units was never refunded, replaced or repaired** ([CPSC Recall Effectiveness Workshop report, 2018](https://www.cpsc.gov/s3fs-public/Recall_Effectiveness_Workshop_Report-2018.pdf)). Some of those end up on Facebook Marketplace, Craigslist and garage-sale tables.
 - In 2026, Consumer Reports found banned infant products (inclined sleepers, drop-side cribs, padded crib bumpers, in-bed sleepers) listed on **every major resale platform** ([Consumer Reports](https://www.consumerreports.org/babies-kids/how-to-avoid-unsafe-used-baby-gear-when-shopping-online-a7805010094/)).
 - Selling a recalled product is already illegal ([15 U.S.C. § 2068](https://www.law.cornell.edu/uscode/text/15/2068)). But the official search tools expect the exact product name or model number, and listings rarely have either. Consumer Reports found the recalled Rock 'n Play listed as "baby sleeper/rocker", "floor cradle" and "bassinet".
 

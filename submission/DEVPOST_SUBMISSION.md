@@ -14,7 +14,7 @@ Check a secondhand listing against U.S. recalls and federal sale bans before you
 ---
 
 ## Inspiration
-We kept running into the same fact: a product recall stops *new* sales, but it barely touches the products already in people's homes. CPSC's own recall-effectiveness research puts the average consumer response at about 6%. The other 94% doesn't vanish. It gets listed on Facebook Marketplace for $25.
+We kept running into the same fact: a product recall stops *new* sales, but it barely touches the products already in people's homes. In CPSC's own data, roughly one in three recalled units is never refunded, replaced or repaired (a 65% overall correction rate across 865 closed recalls). Those products don't vanish. Some get listed on Facebook Marketplace for $25.
 
 This fall, Consumer Reports went looking for four kinds of banned infant products (inclined sleepers, drop-side cribs, padded crib bumpers and in-bed sleepers) and found them on every major resale platform. They also showed why the official recall search doesn't help: the recalled Fisher-Price Rock 'n Play was listed as "baby sleeper/rocker", "floor cradle" and "bassinet". You can't look up a recall for a product whose name you don't know.
 
