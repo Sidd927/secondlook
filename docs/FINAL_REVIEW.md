@@ -12,7 +12,7 @@ Scored against the five official, equally weighted criteria. These are honest sc
 
 ## Three biggest weaknesses
 1. **No demo video yet.** This is a hard requirement. It's a user action: record it from `submission/DEMO_VIDEO_SCRIPT.md`, upload it publicly, and paste the link into Devpost and the README.
-2. **AI isn't live in production.** Without an `ANTHROPIC_API_KEY` the deployment runs the rules engine, which is correctly labeled and fully functional. That weakens the Best AI Hack case, and the AI code path is untested against the live API. *Mitigation:* add the key in Vercel, redeploy, and run one check. The code falls back to the rules engine on any AI error, so the risk is limited to the AI step itself.
+2. **AI isn't live in production (decided).** We chose to submit with the rules engine only. It's labeled on every result and fully functional, but it weakens the Best AI Hack case, and the optional Claude path has never run against the live API. The submission text says this plainly rather than implying live AI.
 3. **Matching is heuristic.** Brand-only matches can surface the wrong product from the same company (e.g. other Fisher-Price recalls for a Fisher-Price listing). *Mitigated by* strength grading, a "why this matched" line, and the "similar recalls that probably aren't this item" fold. AI adjudication would further reduce it.
 
 ## Fixed during review
@@ -38,4 +38,4 @@ Scored against the five official, equally weighted criteria. These are honest sc
 - [x] Demo script ready (`submission/DEMO_VIDEO_SCRIPT.md`)
 - [ ] **Public demo video link obtained** (user action)
 - [ ] **Devpost form submitted before Sun Nov 15, 6:00 PM PT / Mon Nov 16, 7:30 AM IST** (user action)
-- [ ] Optional: `ANTHROPIC_API_KEY` added to Vercel to enable AI mode (user action)
+- [x] AI mode: decided to ship rules-only; the submission text and demo script say so

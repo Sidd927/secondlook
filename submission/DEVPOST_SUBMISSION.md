@@ -45,11 +45,11 @@ Every result includes:
   - brand resolution against recalling firms *and* licensed brands ("Sharper Image-branded… by Allstar")
   - exact model-number and UPC matching
   - strong/possible/weak grading with an explanation for every candidate
-- **AI (Claude via the Anthropic TypeScript SDK):** two narrow structured-output steps validated with Zod.
+- **Optional AI layer (Claude via the Anthropic TypeScript SDK), not enabled in the public demo:** two narrow structured-output steps validated with Zod.
   1. Identify the product from listing text and, optionally, a label photo (vision).
   2. Adjudicate the candidates the engine retrieved: same product, possibly the same, or different, with a reason and what to check.
 
-  Claude can't invent recalls or override legal bans. If AI is unavailable, the rules engine returns a complete result, and the UI labels which engine produced each verdict.
+  Claude can't invent recalls or override legal bans. **The live demo runs the deterministic rules engine**; we chose to ship it that way and didn't run the Claude steps against the live API during the hackathon. Every result is labeled with the engine that produced it ("Rules engine (AI off)"). The ML piece judges will see live is the in-browser OCR.
 - **OCR:** Tesseract.js runs in the browser, so label photos are read on-device.
 - **App:** Next.js 16 (App Router), React 19, Tailwind CSS v4, deployed on Vercel. The UI uses a "printed safety notice" visual language (warm paper, ink and one signal color per verdict) instead of a generic AI dashboard.
 
@@ -79,13 +79,13 @@ Every result includes:
 - Partnering with organizations that run baby-gear swaps and donation drives
 
 ## Built with
-TypeScript · Next.js 16 · React 19 · Tailwind CSS v4 · Node.js · Anthropic Claude API (`@anthropic-ai/sdk`, structured outputs) · Zod · Tesseract.js · Lucide · Vercel · CPSC Recalls REST API · GitHub · Claude Code (AI coding assistant, disclosed)
+TypeScript · Next.js 16 · React 19 · Tailwind CSS v4 · Node.js · Anthropic Claude API (`@anthropic-ai/sdk`; optional integration, not enabled in the live demo) · Zod · Tesseract.js · Lucide · Vercel · CPSC Recalls REST API · GitHub · Claude Code (AI coding assistant, disclosed)
 
 ## AI tools disclosure
-SecondLook was built with substantial assistance from **Claude Code** (Anthropic), which was used for research, design, most of the implementation and documentation. The team directed and reviewed the work and can explain every part of it. In the product, Claude is called through the Anthropic API for listing understanding and recall adjudication; this is optional, and labeled in the UI.
+SecondLook was built with substantial assistance from **Claude Code** (Anthropic), which was used for research, design, most of the implementation and documentation. The team directed and reviewed the work and can explain every part of it. The product includes an optional Claude integration (listing understanding and recall adjudication), but it is **not enabled** in the public deployment, which runs the rules engine and says so on every result.
 
 ## Tracks to select
-- **Best AI Hack:** AI used narrowly and responsibly (structured outputs, vision, retrieval-grounded adjudication, deterministic guardrails)
+- **Best AI Hack:** the track explicitly counts AI app builders and vibe-coding tools. The project was built with Claude Code, runs in-browser ML OCR, and includes an optional, retrieval-grounded Claude layer (not enabled live; say so if asked)
 - **Best Deployed / Shipped App:** public URL, live data refresh, graceful degradation, complete docs
 - **Best Design & UX:** a distinctive visual identity, accessible contrast, keyboard/skip-link support, responsive layout
 - *(Overall is judged automatically)*

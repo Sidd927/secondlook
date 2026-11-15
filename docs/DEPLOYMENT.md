@@ -18,7 +18,7 @@
 ## Environment variables (Vercel → Project → Settings → Environment Variables)
 | Name | Status | Notes |
 |---|---|---|
-| `ANTHROPIC_API_KEY` | **Not set yet** | Without it the app runs the rules engine, labeled "Rules engine (AI off)" in every result |
+| `ANTHROPIC_API_KEY` | **Not set (by choice for the submission)** | The app runs the rules engine, labeled "Rules engine (AI off)" in every result |
 | `ANTHROPIC_MODEL` | Optional | Defaults to `claude-opus-5-5` |
 
 To enable AI after adding the key: `npx vercel env add ANTHROPIC_API_KEY production`, then `npx vercel deploy --prod`.

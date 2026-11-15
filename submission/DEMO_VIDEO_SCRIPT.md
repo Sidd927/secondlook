@@ -49,7 +49,7 @@
 
 > "Under the hood: a snapshot of 7,192 CPSC recalls that refreshes live from the CPSC API, a rules engine for federal bans with legal citations, and a custom matching engine. It translates listing slang into recall vocabulary, resolves brands and matches model numbers. Claude is used narrowly, to read messy listings and photos and judge the recalls the engine found. It can't invent a recall, and it never decides what's legal."
 
-*(If the deployed app shows "Rules engine (AI off)", say: "The live demo is running the rules engine; with an API key, Claude adds photo understanding and per-recall judgments.")*
+> "What you saw runs entirely on the deterministic rules engine; every result says so. There's an optional Claude layer in the code for photo understanding and per-recall judgments, which we kept off for this demo."
 
 ### 2:10–2:20 · Close
 **Screen:** back to the hero headline.

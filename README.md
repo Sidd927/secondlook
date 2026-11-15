@@ -76,7 +76,7 @@ AI is used where it adds something, and kept away from decisions it shouldn't ma
 - **Guardrails:** Claude can only judge candidates retrieved from CPSC data, so it cannot invent recalls. Federal bans are never decided by the model. Outputs are schema-validated, and unknown recall IDs are discarded. Any AI failure falls back to the rules engine, and every result is labeled with the engine that produced it ("AI-assisted" or "Rules engine (AI off)").
 - **Cost control:** a per-IP rate limit; batch mode is rules-only by design.
 
-> **Current deployment status:** the public deployment runs in **rules-engine mode** until an `ANTHROPIC_API_KEY` is added in the Vercel project settings. Everything described above under "What SecondLook does" works without a key.
+> **Current deployment status:** the public deployment runs in **rules-engine mode** (no API key configured), and every result is labeled "Rules engine (AI off)". Everything described above under "What SecondLook does" works without a key. The Claude steps are implemented but have not been run against the live API.
 
 ## Tech stack
 
