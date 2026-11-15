@@ -64,7 +64,7 @@ export const CONCEPTS: Concept[] = [
   {
     id: "car-seat",
     label: "Car seat",
-    cues: ["car seat", "carseat", "infant seat", "booster car seat", "convertible seat", "travel system"],
+    cues: ["car seat", "carseat", "infant car seat", "booster car seat", "convertible car seat", "travel system"],
     expand: ["car_seat", "seat", "infant", "booster"],
     infant: true,
   },

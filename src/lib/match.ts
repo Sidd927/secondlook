@@ -2,7 +2,7 @@
 // expansion, brand resolution against recalling firms, and exact model/UPC matching.
 import type { Candidate, ListingProfile, MatchStrength, Recall } from "./types";
 import type { Corpus } from "./recalls";
-import { brandKey } from "./recalls";
+import { brandKey, GENERIC_BRAND } from "./recalls";
 import { CONCEPTS, detectConcepts } from "./taxonomy";
 import { bigrams, extractModelNumbers, extractYear, normalize, squash, tokenize } from "./text";
 
@@ -28,7 +28,7 @@ export function detectBrand(text: string, corpus: Corpus): string | null {
   const hay = " " + brandKey(text) + " ";
   let best: string | null = null;
   for (const [phrase, count] of corpus.index.brandPhrases) {
-    if (phrase.length < 4 && count < 3) continue;
+    if ((phrase.length < 4 && count < 3) || GENERIC_BRAND.has(phrase)) continue;
     if (hay.includes(" " + phrase + " ") && (!best || phrase.length > best.length)) best = phrase;
   }
   return best;
@@ -49,7 +49,9 @@ export function searchRecalls(text: string, profile: ListingProfile, corpus: Cor
   const base = tokenize(text);
   add(base, 1);
   add(bigrams(base), 1.4);
-  for (const extra of [profile.productLine, profile.productType, ...profile.searchTerms]) {
+  // Rules-mode productType is just our concept label; only AI-derived names add query terms.
+  const extras = profile.source === "ai" ? [profile.productLine, profile.productType, ...profile.searchTerms] : [];
+  for (const extra of extras) {
     if (!extra) continue;
     const t = tokenize(extra);
     add(t, 1);
@@ -139,7 +141,8 @@ export function searchRecalls(text: string, profile: ListingProfile, corpus: Cor
     results.push({
       recall: recalls[d],
       score,
-      phraseHits: bigramOverlap.length,
+      // Rare product-line words ("malm", "mamaroo") are as telling as a two-word phrase.
+      phraseHits: bigramOverlap.length + lineOverlap.filter((t) => !t.includes("_") && (index.df.get(t) ?? 0) <= N * 0.004).length,
       strength,
       signals,
       checks: identifyingChecks(recalls[d]),

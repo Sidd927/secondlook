@@ -30,8 +30,10 @@ interface Index {
   lineTokens: Set<string>[]; // tokens+bigrams from title & product names (the "product line")
 }
 
-const GENERIC_BRAND = new Set(
-  "the baby kids home best pro smart company products group brands international usa america american global trading new life health sports outdoor toys toy little first".split(" "),
+export const GENERIC_BRAND = new Set(
+  ("the baby kids home best pro smart company products group brands international usa america american global trading new life " +
+    "health sports outdoor toys toy little first vintage wood wooden solid classic modern natural premium deluxe white black " +
+    "kids kid infant child children used like great good bed chair table light lights").split(" "),
 );
 
 export function brandKey(s: string): string {

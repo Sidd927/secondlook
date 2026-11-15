@@ -44,6 +44,18 @@ export function Checker({ intro }: { intro: React.ReactNode }) {
       .catch(() => {});
   }, []);
 
+  // Shareable checks: /?q=<listing> pre-fills and runs the check.
+  const autoRan = useRef(false);
+  useEffect(() => {
+    if (autoRan.current) return;
+    const q = new URLSearchParams(window.location.search).get("q");
+    if (q && q.trim().length >= 3) {
+      autoRan.current = true;
+      setText(q);
+      submitRef.current?.(q);
+    }
+  }, []);
+
   const runOcr = useCallback(async (file: File) => {
     setOcr({ state: "running", progress: 0 });
     try {
@@ -102,6 +114,11 @@ export function Checker({ intro }: { intro: React.ReactNode }) {
         const json = await res.json();
         if (!res.ok) throw new Error(json.error ?? "Check failed");
         setResult(json);
+        if (listing) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("q", listing);
+          window.history.replaceState(null, "", url.toString());
+        }
         requestAnimationFrame(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
       } catch (e) {
         setError(e instanceof Error ? e.message : "Something went wrong. Please try again.");
@@ -112,6 +129,9 @@ export function Checker({ intro }: { intro: React.ReactNode }) {
     },
     [text, ocr, photo, status],
   );
+
+  const submitRef = useRef<typeof submit | null>(null);
+  submitRef.current = submit;
 
   return (
     <>

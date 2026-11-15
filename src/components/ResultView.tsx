@@ -173,7 +173,7 @@ function RecallCard({ c, defaultOpen }: { c: Candidate; defaultOpen: boolean }) 
             <span className={`rounded-full border px-2.5 py-0.5 font-medium ${s.cls}`}>{s.label}</span>
             <span className="font-mono text-muted">Recall #{r.id}</span>
             <span className="font-mono text-muted">{fmtDate(r.date)}</span>
-            {units && <span className="font-mono text-muted">{units} units</span>}
+            {units && <span className="font-mono text-muted">{/unit/i.test(units) ? units : `${units} units`}</span>}
           </div>
           <h4 className="mt-2.5 text-[18px] font-semibold leading-snug">
             <a href={r.url} target="_blank" rel="noreferrer" className="hover:underline">
