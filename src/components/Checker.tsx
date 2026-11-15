@@ -38,7 +38,7 @@ export function Checker({ intro }: { intro: React.ReactNode }) {
   const resultRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch("/api/status")
+    fetch("/api/check")
       .then((r) => (r.ok ? r.json() : null))
       .then(setStatus)
       .catch(() => {});
@@ -214,7 +214,7 @@ export function Checker({ intro }: { intro: React.ReactNode }) {
           >
             <Camera className="h-4 w-4" aria-hidden /> {photo ? "Replace photo" : "Add label photo"}
           </label>
-          <span className="hidden text-[12px] text-muted md:inline">Model numbers on the label give the most precise match.</span>
+          <span className="hidden text-[12px] text-muted xl:inline">Label model numbers give the most precise match.</span>
           <button
             type="submit"
             disabled={loading || ocr.state === "running"}

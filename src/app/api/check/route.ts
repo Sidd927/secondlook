@@ -1,4 +1,7 @@
 import { runCheck } from "@/lib/check";
+import { getCorpus } from "@/lib/recalls";
+import { aiAvailable, aiModelName } from "@/lib/ai";
+import { connection } from "next/server";
 import { z } from "zod";
 
 export const maxDuration = 60;
@@ -44,4 +47,18 @@ export async function POST(req: Request) {
     console.error("check failed", e);
     return Response.json({ error: "Something went wrong while checking. Please try again." }, { status: 500 });
   }
+}
+
+// Status + warm-up: the page calls this on load so the same function instance that serves
+// checks has already loaded the recall index and fetched the live CPSC delta.
+export async function GET() {
+  await connection();
+  const corpus = await getCorpus();
+  return Response.json({
+    recalls: corpus.recalls.length,
+    liveRecalls: corpus.liveCount,
+    dataAsOf: corpus.dataAsOf,
+    liveCheckedAt: corpus.liveCheckedAt,
+    ai: aiAvailable() ? { enabled: true, model: aiModelName() } : { enabled: false },
+  });
 }
