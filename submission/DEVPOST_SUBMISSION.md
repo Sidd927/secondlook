@@ -33,7 +33,7 @@ Paste everything between the lines into the "About the project" field (Devpost r
 
 ## Inspiration
 
-A recall stops new sales. It doesn't reach the products already sitting in people's homes. In CPSC's own review of 865 closed recalls, the overall correction rate was 65%, which means roughly one in three recalled units was never refunded, replaced or repaired. Some of those products end up on Facebook Marketplace, Craigslist or a garage-sale table.
+A recall stops new sales, but it doesn't automatically reach the products already in people's homes. CPSC staff reported a 65% overall correction rate across 865 closed Section 15 cases from FY 2014–2016, a figure that counts corrections by manufacturers, distributors, retailers and consumers together. Recalled products that stay in circulation can resurface on Facebook Marketplace, Craigslist or a garage-sale table.
 
 In 2026, Consumer Reports looked for four kinds of banned infant products on resale sites (inclined sleepers, drop-side cribs, padded crib bumpers and in-bed sleepers) and found listings on Facebook Marketplace, eBay, Mercari and Craigslist. It also showed why a buyer can't easily catch this: the recalled Fisher-Price Rock 'n Play was listed as "baby sleeper/rocker", "floor cradle" and "bassinet". Official recall search works best when you already know the product's exact name or model number. A secondhand listing usually gives you neither.
 
@@ -44,14 +44,18 @@ The moment that matters is the few minutes between seeing a listing and handing 
 SecondLook screens a secondhand listing **before you buy**.
 
 - **Paste the listing** exactly as the seller wrote it, or **add a photo of the product label**. The label is read with OCR right in your browser.
-- **Federal sale-ban check.** Some products can't legally be sold at all, regardless of brand: inclined infant sleepers and padded crib bumpers (Safe Sleep for Babies Act, 2022), drop-side cribs (16 CFR 1219/1220), and lawn darts (16 CFR 1306). Cribs made before mid-2011 and in-bed infant sleepers get a "verify" warning under the federal standards. Every rule shows its legal citation.
+- **Federal sale-ban check.** Some product categories are restricted by federal law regardless of brand, and each rule shows its citation:
+  - **Inclined sleepers for infants** (sleep surface inclined more than 10°) and **crib bumpers** (padded bumpers, vinyl bumper guards and vertical slat covers; non-padded mesh liners are excluded). The Safe Sleep for Babies Act of 2022 (Pub. L. 117-126) made both banned hazardous products, prohibiting their manufacture, sale, distribution and import.
+  - **Lawn darts:** banned since 1988 (16 CFR 1306).
+  - **Cribs:** since June 28, 2011, cribs sold or resold in the U.S. must meet the federal crib standards (16 CFR 1219/1220). CPSC's guidance for resellers says drop-side cribs can't meet them.
+  - **"Verify" warnings, not bans:** cribs that may predate mid-2011, and infant sleep products such as in-bed sleepers that fall under the infant sleep products rule (16 CFR 1236).
 - **Recall search.** Ranked matching against 7,192 CPSC recalls since 2005, plus anything published after that snapshot, which the server checks for on the public CPSC API.
-- **A clear verdict:** *Don't buy*, *Verify first* or *No matching recall*. Each comes with the evidence: the official recall photo, the hazard, reported injuries, units affected, the remedy, and a link to the notice on cpsc.gov.
+- **A clear verdict:** *Don't buy*, *Verify first* or *No matching recall*. Every flagged result comes with its evidence: the official recall photo, the hazard, reported injuries, units affected, the remedy, and a link to the notice on cpsc.gov.
 - **What to verify.** Many recalls cover only certain models or date codes, so SecondLook pulls those identifiers out of the notice ("How to tell if this item is covered") and turns them into a **ready-to-send message for the seller**.
 - **Batch mode** for thrift stores, donation drives and sellers: paste up to 200 items, get a sorted flag table, and export it as CSV.
 - **Shareable checks:** every text check has its own link.
 
-No account is needed and nothing is stored.
+No account is needed. SecondLook has no database: the app doesn't save the listings you check, and label photos are read in your browser rather than uploaded. A shareable link does carry the listing text in its URL.
 
 ## What makes it different
 
@@ -112,7 +116,7 @@ These are real results from the live app:
 
 SecondLook was built during IceHacks 2026 by a solo developer, with substantial help from **Claude Code** (Anthropic's AI coding assistant). It was used for research, design, most of the code, the demo-film production and documentation. I directed and reviewed the work and can explain every part of it.
 
-In the product, decisions come from the deterministic engine. The only machine-learning component running live is Tesseract OCR. In the demo video, the narration is synthetic (Kokoro-82M, generated locally), the music is original, and every product shot is real screen capture of the live app.
+In the product, every verdict comes from the deterministic rules engine. The only machine-learning component running live is browser-based Tesseract.js OCR, which reads label photos on the device. The optional Anthropic (Claude) integration in the codebase is disabled in the deployment and makes no decisions. In the demo video, the narration is synthetic (Kokoro-82M, generated locally), the music is original, and every product shot is real screen capture of the live app.
 
 **Credits:** recall data and product images from the U.S. Consumer Product Safety Commission (public domain). Consumer Reports' 2026 investigation is cited. Open-source libraries are listed in the README.
 
@@ -127,6 +131,16 @@ nextjs, react, typescript, javascript, tailwindcss, nodejs, vercel, tesseract.js
 - **Demo-film pipeline (in the repo under `submission/video/`):** playwright, ffmpeg, hyperframes, python.
 - **AI tool used to build it:** claude-code. The rules ask for the AI tools used.
 - **Deliberately not listed:** Anthropic API. It isn't enabled in the deployed product.
+- **Verified against the repo:**
+  - nextjs, react, typescript, tailwindcss, vercel and nodejs come from the app stack and deployment.
+  - javascript: `.mjs` scripts.
+  - tesseract.js / ocr: `Checker.tsx`.
+  - bm25: `src/lib/match.ts`.
+  - rest-api / cpsc-recalls-api: `src/lib/recalls.ts` and `scripts/sync-cpsc.mjs`.
+  - zod: API route validation.
+  - lucide: icons.
+  - playwright, ffmpeg, hyperframes and python: the demo-film pipeline in `submission/video/`.
+  - claude-code: the AI tool used during development.
 
 ### "Try it out" links
 | Label | URL |
@@ -135,7 +149,7 @@ nextjs, react, typescript, javascript, tailwindcss, nodejs, vercel, tesseract.js
 | Source code (GitHub) | https://github.com/Sidd927/secondlook |
 
 ### Image gallery
-Upload from `submission/assets/devpost-gallery/` in this order. All images are genuine screenshots of the live app at 2400 × 1600 (3:2). Full guidance is in `submission/DEVPOST_MEDIA_GUIDE.md`.
+The folder `submission/assets/devpost-gallery/` contains exactly nine images: **six recommended (1–6) and three optional (7–9)**. Upload them in this order. All are genuine screenshots of the live app at 2400 × 1600 (3:2). Full guidance is in `submission/DEVPOST_MEDIA_GUIDE.md`.
 
 | # | File | Caption |
 |---|---|---|
@@ -146,7 +160,8 @@ Upload from `submission/assets/devpost-gallery/` in this order. All images are g
 | 5 | `06-seller-message.png` | Questions to send the seller, built from the recall notice, with one-click copy. |
 | 6 | `08-batch-screening.png` | Batch mode for thrift stores: 12 items screened, sorted by risk, exportable as CSV. |
 | 7 *(optional)* | `07-model-checks.png` | Narrow recalls: only 3-point-harness mamaRoo models are covered, quoted from the notice. |
-| 8 *(optional)* | `09-ban-rules.png` | Federal sale-ban rules, each with its legal citation. |
+| 8 *(optional)* | `09-ban-rules.png` | The rules behind the ban check, each with its legal citation. |
+| 9 *(optional)* | `05-label-result.png` | After the label check: brand "Fisher Price" and model "CHP55" carried into the result. |
 
 ### Video demo link
 ```
@@ -178,7 +193,7 @@ https://youtu.be/q6ousB0I6-I
 - [ ] "About the project" pasted, and the Markdown preview looks right.
 - [ ] Built-with tags added; Anthropic API **not** listed.
 - [ ] Try-it-out links: Live app and GitHub, both open while signed out.
-- [ ] Gallery: images 1–6 (plus optional 7–8) uploaded in order, with captions.
+- [ ] Gallery: images 1–6 (plus optional 7–9) uploaded in order, with captions.
 - [ ] Video link `https://youtu.be/q6ousB0I6-I` entered in the video field; the embed preview plays.
 - [ ] Prizes: Deployed 1st/2nd/3rd, Design & UX and AI Hack selected; Hardware not selected.
 - [ ] Team: solo entry (Siddhant Patil); registered for IceHacks on Devpost.
@@ -195,7 +210,7 @@ https://youtu.be/q6ousB0I6-I
 **Why this submission works** (evidence mapped to the five equally weighted criteria):
 - **Technical execution:** a live deployment over real federal data, a custom matching engine with documented failure modes and fixes, citable ban rules, in-browser OCR and a live-delta data pipeline. Judges can verify all of it in the app and the repo.
 - **Creativity & originality:** listing-first, pre-purchase screening; legal bans treated separately from recalls; the output is an action (seller questions), not a search page.
-- **Impact & usefulness:** a sourced safety problem (CPSC correction-rate data, the Consumer Reports 2026 investigation) and concrete outputs a parent or thrift store can use right away.
+- **Impact & usefulness:** a sourced safety problem (CPSC staff's reported 65% overall correction rate, the Consumer Reports 2026 investigation) and concrete outputs a parent or thrift store can use right away.
 - **Design & UX:** a distinctive "printed safety notice" identity, one-box input, example chips, a clear verdict hierarchy and responsive accessibility basics. The gallery shows the real states.
 - **Presentation:** a 2:33 produced film built entirely from real app footage, a concise story, verified claims and genuine screenshots.
 

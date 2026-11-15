@@ -16,9 +16,9 @@ Built for [IceHacks 2026](https://icehacks.devpost.com/).
 
 A recall stops new sales. It doesn't stop resales.
 
-- Across 865 closed CPSC recalls (FY2014–2016), the overall correction rate was **65%**, even counting corrections by manufacturers, distributors and retailers. Roughly **1 in 3 recalled units was never refunded, replaced or repaired** ([CPSC Recall Effectiveness Workshop report, 2018](https://www.cpsc.gov/s3fs-public/Recall_Effectiveness_Workshop_Report-2018.pdf)). Some of those end up on Facebook Marketplace, Craigslist and garage-sale tables.
+- CPSC staff reported a **65% overall correction rate** across 865 closed Section 15 cases from FY 2014–2016, a figure that counts corrections by manufacturers, distributors, retailers and consumers together ([CPSC Recall Effectiveness Workshop report, 2018](https://www.cpsc.gov/s3fs-public/Recall_Effectiveness_Workshop_Report-2018.pdf)). Recalled products that stay in circulation can resurface on Facebook Marketplace, Craigslist and garage-sale tables.
 - In 2026, Consumer Reports found banned infant products (inclined sleepers, drop-side cribs, padded crib bumpers, in-bed sleepers) listed on **every major resale platform** ([Consumer Reports](https://www.consumerreports.org/babies-kids/how-to-avoid-unsafe-used-baby-gear-when-shopping-online-a7805010094/)).
-- Selling a recalled product is already illegal ([15 U.S.C. § 2068](https://www.law.cornell.edu/uscode/text/15/2068)). But the official search tools expect the exact product name or model number, and listings rarely have either. Consumer Reports found the recalled Rock 'n Play listed as "baby sleeper/rocker", "floor cradle" and "bassinet".
+- Federal law already makes it unlawful to sell a product that is subject to a CPSC recall ([15 U.S.C. § 2068(a)(2)(B)](https://www.law.cornell.edu/uscode/text/15/2068)). But the official search tools expect the exact product name or model number, and listings rarely have either. Consumer Reports found the recalled Rock 'n Play listed as "baby sleeper/rocker", "floor cradle" and "bassinet".
 
 ## Try it in 30 seconds
 
@@ -31,7 +31,13 @@ A recall stops new sales. It doesn't stop resales.
 ## What SecondLook does
 
 1. **Paste a listing, or snap the label.** Text recognition runs in your browser (Tesseract.js), so the photo never has to leave your device.
-2. **Federal ban check.** Deterministic rules for products that are illegal to sell no matter what: inclined infant sleepers, padded crib bumpers, drop-side cribs, lawn darts. Each rule cites its law.
+2. **Federal ban check.** Deterministic rules for categories restricted by federal law regardless of brand:
+   - inclined sleepers for infants and crib bumpers, banned hazardous products under the Safe Sleep for Babies Act of 2022
+   - lawn darts (16 CFR 1306)
+   - drop-side cribs, which can't meet the crib standards that cribs sold since June 28, 2011 must meet (16 CFR 1219/1220)
+   - "verify" warnings for cribs that may predate mid-2011 and for infant sleep products under 16 CFR 1236
+
+   Each rule cites its source.
 3. **Recall search.** Ranked retrieval over 7,192 CPSC recalls, plus anything published since the last build, fetched live from the CPSC API.
 4. **A clear verdict.** *Don't buy*, *Verify first* or *No matching recall*, with the evidence: recall image, hazard, injuries, units affected and a link to the official notice.
 5. **What to verify.** Model numbers, date codes and sale windows are pulled from the recall notice, then turned into a **ready-to-send message for the seller**.
@@ -168,7 +174,7 @@ scripts/                   snapshot sync + smoke test
 ## AI-assisted development disclosure
 
 - **Building it:** this project was built during IceHacks 2026 (Nov 15, 2026) with substantial help from **Claude Code (Anthropic)**, an AI coding assistant. It was used for research, product strategy, most of the code, the demo-video production and documentation. The team directed the work, reviewed it, and is responsible for the result.
-- **In the product:** the optional Claude integration described above is **not enabled** in the public deployment. The live app runs the deterministic rules engine.
+- **In the product:** every verdict comes from the deterministic rules engine. The only machine-learning component running live is browser-based Tesseract.js OCR. The optional Anthropic (Claude) integration described above is **disabled** in the public deployment.
 - **In the video:** the narration is synthetic (Kokoro-82M, generated locally), the music is original and was synthesized in code, and every product shot is real screen capture of the live app.
 
 ## Credits
