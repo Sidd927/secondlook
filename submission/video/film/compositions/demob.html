@@ -1,0 +1,80 @@
+<template>
+  <style>
+
+@font-face { font-family: "SL Serif"; src: url("assets/fonts/instrument-serif-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "SL Serif"; src: url("assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "SL Mono"; src: url("assets/fonts/geist-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "SL Mono"; src: url("assets/fonts/geist-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: "SL Sans", sans-serif; color: #15130f; }
+.paper { position: absolute; inset: 0; background: #f5f2eb; }
+.serif { font-family: "SL Serif", serif; font-weight: 400; letter-spacing: -0.01em; }
+.mono { font-family: "SL Mono", monospace; letter-spacing: 0.12em; text-transform: uppercase; }
+.red { color: #b3311a; }
+.callout { position: absolute; right: 64px; top: 56px; display: flex; align-items: center; gap: 16px;
+  background: #15130f; color: #f5f2eb; padding: 18px 28px; border-radius: 14px; font-size: 30px; font-weight: 500;
+  box-shadow: 0 18px 40px -18px rgba(21,19,15,.6); opacity: 0; }
+.callout .dot { width: 14px; height: 14px; border-radius: 50%; background: #e0583f; flex: none; }
+.callout .dot.amber { background: #e3a43b; } .callout .dot.green { background: #6fb38f; }
+.callout small { display: block; font-size: 28px; font-weight: 400; color: #cfc8ba; margin-top: 4px; }
+.chapter { position: absolute; left: 64px; top: 56px; background: #f5f2eb; color: #15130f; border: 2px solid #15130f;
+  padding: 14px 24px; border-radius: 12px; font-size: 28px; opacity: 0; box-shadow: 0 12px 30px -16px rgba(21,19,15,.5); }
+.chapter b { font-weight: 500; margin-right: 14px; color: #b3311a; }
+.cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+.cam video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+
+
+#b-cam { transform-origin: 0 0; }
+#b-label { position: absolute; left: 140px; top: 250px; width: 640px; background: #fff; border-radius: 18px; padding: 18px;
+  box-shadow: 0 30px 60px -28px rgba(21,19,15,.55); opacity: 0; transform-origin: 50% 50%; }
+#b-label img { width: 100%; display: block; border-radius: 8px; }
+#b-label .mono { font-size: 18px; color: #6b6458; margin-top: 12px; }
+
+  </style>
+  <div id="root" data-composition-id="demob" data-width="1920" data-height="1080">
+
+    <div class="paper"></div>
+    <div id="b-wrap" style="position:absolute;inset:0">
+      <div class="cam" id="b-cam"><video id="b-vid" class="clip" data-start="0" data-duration="13.0" data-media-start="2.2" src="assets/footage/photo.mp4" muted playsinline></video></div>
+      <div id="b-label"><img src="assets/img/sample-label.png" alt=""><div class="mono" data-layout-ignore>Sample label photo (demo)</div></div>
+      <div id="b-ch" class="chapter mono"><b>02</b>Snap the label</div>
+      <div id="b-c1" class="callout"><span class="dot green"></span><div>Text read on-device<small>OCR runs in the browser (Tesseract.js)</small></div></div>
+      <div id="b-c2" class="callout"><span class="dot"></span><div>Brand + model from the label</div></div>
+    </div>
+
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const D = 13.0;
+
+    function cam(sel, t, s, cx, cy, dur) {
+      const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+      const x = clamp(960 - s * cx, 1920 - 1920 * s, 0);
+      const y = clamp(540 - s * cy, 1080 - 1080 * s, 0);
+      tl.to(sel, { scale: s, x: x, y: y, duration: dur || 0.9, ease: "power3.inOut" }, t);
+    }
+    function show(sel, t0, t1, fromY) {
+      tl.fromTo(sel, { opacity: 0, y: fromY === undefined ? 14 : fromY }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, t0);
+      if (t1 !== undefined) tl.to(sel, { opacity: 0, y: -8, duration: 0.35, ease: "power2.in" }, t1);
+    }
+
+
+    show("#b-ch", 0.15, 3.4);
+    tl.fromTo("#b-label", { opacity: 0, x: -60, scale: 1 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+    tl.to("#b-label", { x: 840, y: 120, scale: 0.18, opacity: 0, duration: 0.6, ease: "power3.in" }, 0.75);
+    cam("#b-cam", 1.25, 1.55, 1390, 540, 0.9);
+    show("#b-c1", 2.5, 5.6);
+    cam("#b-cam", 5.7, 1.0, 960, 540, 0.7);
+    cam("#b-cam", 8.85, 1.6, 720, 445, 1.0);
+    show("#b-c2", 9.3, 12.6);
+    tl.to("#b-cam", { scale: "+=0.02", x: "-=19", y: "-=11", duration: 3.0, ease: "sine.inOut" }, 9.9);
+
+    tl.fromTo("#b-wrap", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.out" }, 0);
+    tl.to("#b-wrap", { opacity: 0, duration: 0.3, ease: "power1.in" }, D - 0.32);
+    window.__timelines["demob"] = tl;
+  </script>
+</template>

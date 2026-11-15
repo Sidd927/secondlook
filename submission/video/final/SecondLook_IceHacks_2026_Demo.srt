@@ -1,0 +1,163 @@
+1
+00:00:00,500 --> 00:00:02,804
+Here's a listing you might scroll past any day.
+
+2
+00:00:03,200 --> 00:00:05,021
+A baby sleeper. Barely used.
+
+3
+00:00:05,021 --> 00:00:07,168
+Twenty-five dollars, pickup only.
+
+4
+00:00:07,600 --> 00:00:10,181
+It looks perfectly safe. But what if it isn't?
+
+5
+00:00:11,900 --> 00:00:14,703
+This is the Fisher-Price Rock 'n Play.
+
+6
+00:00:14,703 --> 00:00:18,317
+In 2019 it was recalled, about 4.7 million units,
+
+7
+00:00:18,317 --> 00:00:20,604
+after reports of infant deaths.
+
+8
+00:00:21,100 --> 00:00:25,217
+Inclined infant sleepers like it are now banned from sale entirely.
+
+9
+00:00:25,700 --> 00:00:28,201
+But a recall stops new sales, not resales.
+
+10
+00:00:28,201 --> 00:00:30,761
+And this listing never says “Rock 'n Play.”
+
+11
+00:00:30,761 --> 00:00:32,249
+It says “sleeper/rocker.”
+
+12
+00:00:32,800 --> 00:00:36,640
+This year, Consumer Reports found banned baby gear listed on every
+
+13
+00:00:36,640 --> 00:00:38,560
+major resale platform it checked.
+
+14
+00:00:39,700 --> 00:00:41,087
+So we built SecondLook.
+
+15
+00:00:41,500 --> 00:00:44,700
+A safety check for the moment before you buy something used.
+
+16
+00:00:45,000 --> 00:00:47,405
+Paste a listing, or snap the label.
+
+17
+00:00:47,405 --> 00:00:50,496
+It checks U.S. recalls and federal sale bans,
+
+18
+00:00:50,496 --> 00:00:53,107
+then tells you what to ask the seller.
+
+19
+00:00:54,300 --> 00:00:58,033
+Here's that same listing, pasted in exactly as the seller wrote it.
+
+20
+00:01:00,600 --> 00:01:02,461
+The verdict: don't buy this.
+
+21
+00:01:02,461 --> 00:01:06,979
+Inclined sleepers are banned, and it matches the actual CPSC recall.
+
+22
+00:01:12,400 --> 00:01:15,233
+Sellers often send a photo of the label instead.
+
+23
+00:01:15,233 --> 00:01:17,712
+SecondLook reads it right in your browser.
+
+24
+00:01:20,600 --> 00:01:23,949
+It picks up the brand and the model number, and runs the same check.
+
+25
+00:01:25,400 --> 00:01:27,042
+Many recalls are narrower.
+
+26
+00:01:27,042 --> 00:01:29,631
+This infant swing matches a 4moms recall,
+
+27
+00:01:29,631 --> 00:01:31,715
+but only some models are covered.
+
+28
+00:01:32,200 --> 00:01:34,688
+So SecondLook writes the questions for you,
+
+29
+00:01:34,688 --> 00:01:36,829
+ready to copy and send to the seller.
+
+30
+00:01:37,600 --> 00:01:40,395
+And it shows exactly which models the notice covers.
+
+31
+00:01:42,000 --> 00:01:44,603
+For thrift stores and donation drives,
+
+32
+00:01:44,603 --> 00:01:49,125
+batch mode screens a whole intake list at once, and exports a CSV.
+
+33
+00:01:52,100 --> 00:01:56,530
+Under the hood: 7,192 CPSC recalls, indexed,
+
+34
+00:01:56,530 --> 00:02:02,169
+plus newer recalls pulled live from the public CPSC API.
+
+35
+00:02:02,700 --> 00:02:06,566
+A matching engine translates listing slang into recall language,
+
+36
+00:02:06,566 --> 00:02:09,164
+resolves brands, and matches model numbers.
+
+37
+00:02:09,700 --> 00:02:13,442
+Federal bans are explicit rules with legal citations.
+
+38
+00:02:13,442 --> 00:02:17,395
+The live app runs entirely on this deterministic engine,
+
+39
+00:02:17,395 --> 00:02:20,431
+and every match links back to its evidence.
+
+40
+00:02:21,600 --> 00:02:24,523
+Before you buy it. Before you sell it. Look twice.
+
+41
+00:02:26,900 --> 00:02:28,863
+SecondLook. Free, and live today.

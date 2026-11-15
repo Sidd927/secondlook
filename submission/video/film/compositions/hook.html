@@ -1,0 +1,100 @@
+<template>
+  <style>
+
+@font-face { font-family: "SL Serif"; src: url("assets/fonts/instrument-serif-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "SL Serif"; src: url("assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "SL Mono"; src: url("assets/fonts/geist-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "SL Mono"; src: url("assets/fonts/geist-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: "SL Sans", sans-serif; color: #15130f; }
+.paper { position: absolute; inset: 0; background: #f5f2eb; }
+.serif { font-family: "SL Serif", serif; font-weight: 400; letter-spacing: -0.01em; }
+.mono { font-family: "SL Mono", monospace; letter-spacing: 0.12em; text-transform: uppercase; }
+.red { color: #b3311a; }
+.callout { position: absolute; right: 64px; top: 56px; display: flex; align-items: center; gap: 16px;
+  background: #15130f; color: #f5f2eb; padding: 18px 28px; border-radius: 14px; font-size: 30px; font-weight: 500;
+  box-shadow: 0 18px 40px -18px rgba(21,19,15,.6); opacity: 0; }
+.callout .dot { width: 14px; height: 14px; border-radius: 50%; background: #e0583f; flex: none; }
+.callout .dot.amber { background: #e3a43b; } .callout .dot.green { background: #6fb38f; }
+.callout small { display: block; font-size: 28px; font-weight: 400; color: #cfc8ba; margin-top: 4px; }
+.chapter { position: absolute; left: 64px; top: 56px; background: #f5f2eb; color: #15130f; border: 2px solid #15130f;
+  padding: 14px 24px; border-radius: 12px; font-size: 28px; opacity: 0; box-shadow: 0 12px 30px -16px rgba(21,19,15,.5); }
+.chapter b { font-weight: 500; margin-right: 14px; color: #b3311a; }
+.cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+.cam video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+
+
+.listing { position: absolute; left: 290px; top: 210px; width: 1340px; height: 600px; background: #fff; border-radius: 26px;
+  display: grid; grid-template-columns: 520px 1fr; overflow: hidden; box-shadow: 0 40px 80px -40px rgba(21,19,15,.45), 0 0 0 1px rgba(21,19,15,.06); }
+.listing .ph { background: #fff; border-right: 1px solid #ece7dc; display: flex; align-items: center; justify-content: center; }
+.listing .ph img { width: 430px; height: 520px; object-fit: contain; }
+.listing .bd { padding: 56px 60px; display: flex; flex-direction: column; gap: 18px; }
+.listing .eb { font-size: 24px; color: #6b6458; }
+.listing .ti { font-size: 60px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; }
+.listing .pr { font-size: 64px; font-weight: 600; transform-origin: left center; }
+.listing .chips { display: flex; gap: 12px; }
+.listing .chips span { background: #ece7dc; border-radius: 999px; padding: 8px 18px; font-size: 24px; color: #3b372f; }
+.listing .de { font-size: 28px; line-height: 1.4; color: #3b372f; max-width: 700px; }
+.listing .btn { margin-top: auto; align-self: flex-start; background: #15130f; color: #f5f2eb; border-radius: 12px; padding: 16px 30px; font-size: 26px; font-weight: 500; }
+#hook-t { position: absolute; left: 1150px; top: 330px; width: 720px; font-size: 104px; line-height: 1.02; }
+#hook-t .ln { overflow: hidden; padding-bottom: 14px; }
+#hook-t span { display: inline-block; }
+#hook-note { position: absolute; left: 64px; bottom: 44px; font-size: 18px; color: #6b6458; opacity: 0; }
+
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+
+    <div class="paper"></div>
+    <div id="hook-wrap" style="position:absolute;inset:0">
+      <div id="hook-card" class="listing">
+        <div class="ph"><img src="assets/img/rocknplay.jpg" alt=""></div>
+        <div class="bd">
+          <div class="mono eb">Marketplace · Listed 2 days ago</div>
+          <div class="ti">Baby sleeper/rocker</div>
+          <div class="pr">$25</div>
+          <div class="chips"><span>Used · like new</span><span>Pickup only</span></div>
+          <div class="de">Fisher Price baby sleeper/rocker, barely used. Folds flat for travel. $25, pickup only.</div>
+          <div class="btn">Message seller</div>
+        </div>
+      </div>
+      <div id="hook-t" class="serif">
+        <div class="ln"><span id="hook-t1">It looks perfectly safe.</span></div>
+        <div class="ln"><span id="hook-t2" class="red" style="font-style:italic">But what if it isn’t?</span></div>
+      </div>
+      <div id="hook-note" class="mono" data-layout-ignore>Illustrative listing · product photo: U.S. CPSC</div>
+    </div>
+
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const D = 11.4;
+
+    function cam(sel, t, s, cx, cy, dur) {
+      const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+      const x = clamp(960 - s * cx, 1920 - 1920 * s, 0);
+      const y = clamp(540 - s * cy, 1080 - 1080 * s, 0);
+      tl.to(sel, { scale: s, x: x, y: y, duration: dur || 0.9, ease: "power3.inOut" }, t);
+    }
+    function show(sel, t0, t1, fromY) {
+      tl.fromTo(sel, { opacity: 0, y: fromY === undefined ? 14 : fromY }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, t0);
+      if (t1 !== undefined) tl.to(sel, { opacity: 0, y: -8, duration: 0.35, ease: "power2.in" }, t1);
+    }
+
+
+    tl.fromTo("#hook-card", { opacity: 0, y: 50, scale: 0.97, x: 0 }, { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: "power3.out" }, 0.1);
+    tl.fromTo("#hook-note", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 0.8);
+    tl.to("#hook-card", { scale: 1.035, duration: 6.0, ease: "none" }, 1.1);
+    tl.fromTo("#hook-card .pr", { scale: 1 }, { scale: 1.08, duration: 0.25, yoyo: true, repeat: 1, ease: "power2.out" }, 4.6);
+    tl.to("#hook-card", { x: -360, scale: 0.78, duration: 0.95, ease: "power3.inOut" }, 7.1);
+    tl.fromTo("#hook-t1", { yPercent: 110 }, { yPercent: 0, duration: 0.7, ease: "power4.out" }, 7.55);
+    tl.fromTo("#hook-t2", { yPercent: 110 }, { yPercent: 0, duration: 0.7, ease: "power4.out" }, 8.9);
+    tl.to("#hook-t", { opacity: 0, duration: 0.45, ease: "power2.in" }, 10.75);
+    tl.to("#hook-note", { opacity: 0, duration: 0.4 }, 10.8);
+
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

@@ -1,0 +1,140 @@
+[
+ {
+  "id": "l01",
+  "scene": "hook",
+  "caption": "Here's a listing you might scroll past any day.",
+  "tts": "Here's a listing you might scroll past, any day."
+ },
+ {
+  "id": "l02",
+  "scene": "hook",
+  "caption": "A baby sleeper. Barely used. Twenty-five dollars, pickup only.",
+  "tts": "A baby sleeper. Barely used. Twenty-five dollars... pickup only."
+ },
+ {
+  "id": "l03",
+  "scene": "hook",
+  "caption": "It looks perfectly safe. But what if it isn't?",
+  "tts": "It looks perfectly safe. ... But what if it isn't?"
+ },
+ {
+  "id": "l04",
+  "scene": "problem",
+  "caption": "This is the Fisher-Price Rock 'n Play. In 2019 it was recalled, about 4.7 million units, after reports of infant deaths.",
+  "tts": "This is the Fisher-Price Rock-in-Play. In twenty nineteen, it was recalled. About four point seven million units, after reports of infant deaths."
+ },
+ {
+  "id": "l05",
+  "scene": "problem",
+  "caption": "Inclined infant sleepers like it are now banned from sale entirely.",
+  "tts": "Inclined infant sleepers like it are now banned from sale, entirely."
+ },
+ {
+  "id": "l06",
+  "scene": "problem",
+  "caption": "But a recall stops new sales, not resales. And this listing never says \u201cRock 'n Play.\u201d It says \u201csleeper/rocker.\u201d",
+  "tts": "But a recall stops new sales, not resales. And this listing never says Rock-in-Play. It says, sleeper, rocker."
+ },
+ {
+  "id": "l07",
+  "scene": "problem",
+  "caption": "This year, Consumer Reports found banned baby gear listed on every major resale platform it checked.",
+  "tts": "This year, Consumer Reports found banned baby gear listed on every major resale platform it checked."
+ },
+ {
+  "id": "l08",
+  "scene": "meet",
+  "caption": "So we built SecondLook.",
+  "tts": "So we built SecondLook."
+ },
+ {
+  "id": "l09",
+  "scene": "meet",
+  "caption": "A safety check for the moment before you buy something used.",
+  "tts": "A safety check, for the moment before you buy something used."
+ },
+ {
+  "id": "l10",
+  "scene": "meet",
+  "caption": "Paste a listing, or snap the label. It checks U.S. recalls and federal sale bans, then tells you what to ask the seller.",
+  "tts": "Paste a listing, or snap the label. It checks U.S. recalls and federal sale bans, then tells you exactly what to ask the seller."
+ },
+ {
+  "id": "l11",
+  "scene": "demoA",
+  "caption": "Here's that same listing, pasted in exactly as the seller wrote it.",
+  "tts": "Here's that same listing, pasted in exactly as the seller wrote it."
+ },
+ {
+  "id": "l12",
+  "scene": "demoA",
+  "caption": "The verdict: don't buy this. Inclined sleepers are banned, and it matches the actual CPSC recall.",
+  "tts": "The verdict: don't buy this. Inclined sleepers are banned, and it matches the actual C.P.S.C. recall."
+ },
+ {
+  "id": "l14",
+  "scene": "demoB",
+  "caption": "Sellers often send a photo of the label instead. SecondLook reads it right in your browser.",
+  "tts": "Sellers often send a photo of the label instead. SecondLook reads it, right in your browser."
+ },
+ {
+  "id": "l15",
+  "scene": "demoB",
+  "caption": "It picks up the brand and the model number, and runs the same check.",
+  "tts": "It picks up the brand, and the model number, and runs the same check."
+ },
+ {
+  "id": "l16",
+  "scene": "demoC",
+  "caption": "Many recalls are narrower. This infant swing matches a 4moms recall, but only some models are covered.",
+  "tts": "Many recalls are narrower. This infant swing matches a Four-moms recall... but only some models are covered."
+ },
+ {
+  "id": "l17",
+  "scene": "demoC",
+  "caption": "So SecondLook writes the questions for you, ready to copy and send to the seller.",
+  "tts": "So SecondLook writes the questions for you, ready to copy, and send to the seller."
+ },
+ {
+  "id": "l18",
+  "scene": "demoC",
+  "caption": "And it shows exactly which models the notice covers.",
+  "tts": "And it shows exactly which models the notice covers."
+ },
+ {
+  "id": "l19",
+  "scene": "demoD",
+  "caption": "For thrift stores and donation drives, batch mode screens a whole intake list at once, and exports a CSV.",
+  "tts": "For thrift stores and donation drives, batch mode screens a whole intake list at once, and exports a C.S.V."
+ },
+ {
+  "id": "l20",
+  "scene": "how",
+  "caption": "Under the hood: 7,192 CPSC recalls, indexed, plus newer recalls pulled live from the public CPSC API.",
+  "tts": "Under the hood: seven thousand, one hundred ninety-two C.P.S.C. recalls, indexed. Plus newer recalls, pulled live, from the public C.P.S.C. A.P.I."
+ },
+ {
+  "id": "l21",
+  "scene": "how",
+  "caption": "A matching engine translates listing slang into recall language, resolves brands, and matches model numbers.",
+  "tts": "A matching engine translates listing slang into recall language, resolves brands, and matches model numbers."
+ },
+ {
+  "id": "l22",
+  "scene": "how",
+  "caption": "Federal bans are explicit rules with legal citations. The live app runs entirely on this deterministic engine, and every match links back to its evidence.",
+  "tts": "Federal bans are explicit rules, each with its legal citation. The live app runs entirely on this deterministic engine... and every match links back to its evidence."
+ },
+ {
+  "id": "l24",
+  "scene": "impact",
+  "caption": "Before you buy it. Before you sell it. Look twice.",
+  "tts": "Before you buy it. ... Before you sell it. ... Look twice."
+ },
+ {
+  "id": "l25",
+  "scene": "close",
+  "caption": "SecondLook. Free, and live today.",
+  "tts": "SecondLook. Free, and live today."
+ }
+]

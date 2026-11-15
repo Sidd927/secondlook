@@ -1,0 +1,150 @@
+<template>
+  <style>
+
+@font-face { font-family: "SL Serif"; src: url("assets/fonts/instrument-serif-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "SL Serif"; src: url("assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "SL Mono"; src: url("assets/fonts/geist-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "SL Mono"; src: url("assets/fonts/geist-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: "SL Sans", sans-serif; color: #15130f; }
+.paper { position: absolute; inset: 0; background: #f5f2eb; }
+.serif { font-family: "SL Serif", serif; font-weight: 400; letter-spacing: -0.01em; }
+.mono { font-family: "SL Mono", monospace; letter-spacing: 0.12em; text-transform: uppercase; }
+.red { color: #b3311a; }
+.callout { position: absolute; right: 64px; top: 56px; display: flex; align-items: center; gap: 16px;
+  background: #15130f; color: #f5f2eb; padding: 18px 28px; border-radius: 14px; font-size: 30px; font-weight: 500;
+  box-shadow: 0 18px 40px -18px rgba(21,19,15,.6); opacity: 0; }
+.callout .dot { width: 14px; height: 14px; border-radius: 50%; background: #e0583f; flex: none; }
+.callout .dot.amber { background: #e3a43b; } .callout .dot.green { background: #6fb38f; }
+.callout small { display: block; font-size: 28px; font-weight: 400; color: #cfc8ba; margin-top: 4px; }
+.chapter { position: absolute; left: 64px; top: 56px; background: #f5f2eb; color: #15130f; border: 2px solid #15130f;
+  padding: 14px 24px; border-radius: 12px; font-size: 28px; opacity: 0; box-shadow: 0 12px 30px -16px rgba(21,19,15,.5); }
+.chapter b { font-weight: 500; margin-right: 14px; color: #b3311a; }
+.cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+.cam video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+
+
+.listing { position: absolute; left: 290px; top: 210px; width: 1340px; height: 600px; background: #fff; border-radius: 26px;
+  display: grid; grid-template-columns: 520px 1fr; overflow: hidden; box-shadow: 0 40px 80px -40px rgba(21,19,15,.45), 0 0 0 1px rgba(21,19,15,.06); }
+.listing .ph { background: #fff; border-right: 1px solid #ece7dc; display: flex; align-items: center; justify-content: center; }
+.listing .ph img { width: 430px; height: 520px; object-fit: contain; }
+.listing .bd { padding: 56px 60px; }
+.layer { position: absolute; inset: 56px 60px; display: flex; flex-direction: column; gap: 20px; }
+.eb { font-size: 24px; color: #6b6458; }
+.ti { font-size: 60px; font-weight: 600; letter-spacing: -0.02em; }
+.pr { font-size: 64px; font-weight: 600; }
+.rt { font-size: 56px; line-height: 1.06; }
+.facts { display: flex; gap: 56px; margin-top: 10px; }
+.facts b { display: block; font-size: 72px; line-height: 1; font-weight: 400; }
+.facts span { font-size: 24px; color: #6b6458; }
+.src { margin-top: auto; font-size: 18px; color: #6b6458; }
+#pr-scan { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #b3311a; box-shadow: 0 0 30px 6px rgba(179,49,26,.35); opacity: 0; }
+#pr-stamp { position: absolute; right: 300px; top: 560px; font-size: 64px; text-transform: uppercase; color: #b3311a; border: 5px solid #b3311a;
+  padding: 6px 26px; border-radius: 10px; background: rgba(248,230,224,.92); opacity: 0; letter-spacing: 0.02em; }
+#pr-law { position: absolute; left: 0; right: 0; top: 860px; text-align: center; font-size: 26px; color: #6e1d0f; opacity: 0; }
+#pr-line { position: absolute; left: 0; right: 0; top: 230px; text-align: center; font-size: 96px; opacity: 0; }
+#pr-cmp { position: absolute; left: 160px; right: 160px; top: 470px; display: grid; grid-template-columns: 1fr 140px 1fr; align-items: center; }
+#pr-cmp .col { background: #fbfaf6; border: 1px solid #d9d2c3; border-radius: 22px; padding: 40px 44px; opacity: 0; }
+#pr-cmp .k { font-size: 22px; color: #6b6458; }
+#pr-cmp .v { font-size: 74px; margin-top: 10px; line-height: 1.05; }
+#pr-cmp .ne { text-align: center; font-size: 150px; opacity: 0; }
+#pr-cr { position: absolute; left: 160px; right: 160px; top: 190px; }
+#pr-cr .k { font-size: 24px; color: #b3311a; opacity: 0; }
+#pr-cr .h { font-size: 92px; line-height: 1.02; margin-top: 18px; max-width: 1450px; opacity: 0; }
+#pr-cr .plats { display: flex; gap: 22px; margin-top: 54px; }
+#pr-cr .plats div { background: #fbfaf6; border: 1px solid #d9d2c3; border-radius: 16px; padding: 22px 30px; font-size: 32px; font-weight: 500; display: flex; align-items: center; gap: 14px; opacity: 0; }
+#pr-cr .plats i { width: 16px; height: 16px; border-radius: 50%; background: #b3311a; display: inline-block; }
+#pr-cr .s { font-size: 19px; color: #6b6458; margin-top: 40px; opacity: 0; }
+
+  </style>
+  <div id="root" data-composition-id="problem" data-width="1920" data-height="1080">
+
+    <div class="paper"></div>
+    <div id="pr-wrap" style="position:absolute;inset:0">
+      <div id="pr-card" class="listing">
+        <div class="ph"><img src="assets/img/rocknplay.jpg" alt=""></div>
+        <div class="bd" style="position:relative">
+          <div id="pr-old" class="layer">
+            <div class="mono eb">Marketplace · Listed 2 days ago</div>
+            <div class="ti">Baby sleeper/rocker</div>
+            <div class="pr">$25</div>
+          </div>
+          <div id="pr-new" class="layer" style="opacity:0">
+            <div class="mono eb red">U.S. CPSC · Recall #19105 · Apr 12, 2019</div>
+            <div class="rt serif">Fisher-Price Recalls Rock ’n Play Sleepers Due to Reports of Deaths</div>
+            <div class="facts">
+              <div><b class="serif">≈4.7M</b><span>units recalled</span></div>
+              <div><b class="serif">Refund</b><span>or voucher offered</span></div>
+            </div>
+            <div class="mono src" data-layout-ignore>Source · cpsc.gov recall notice</div>
+          </div>
+        </div>
+        <div id="pr-scan"></div>
+      </div>
+      <div id="pr-stamp" class="serif">Banned from sale</div>
+      <div id="pr-law" class="mono">Safe Sleep for Babies Act · 2022 · inclined infant sleepers</div>
+
+      <div id="pr-line" class="serif">A recall stops new sales. <i class="red">Not resales.</i></div>
+      <div id="pr-cmp">
+        <div class="col"><div class="mono k">What the listing says</div><div class="serif v">“Baby sleeper/rocker”</div></div>
+        <div class="ne serif red">≠</div>
+        <div class="col"><div class="mono k">What the recall says</div><div class="serif v">“Rock ’n Play Sleeper”</div></div>
+      </div>
+
+      <div id="pr-cr">
+        <div class="mono k">Consumer Reports · 2026 investigation</div>
+        <div class="serif h">Banned baby gear, listed on every major resale platform it checked.</div>
+        <div class="plats">
+          <div id="pr-p1"><i></i>Facebook Marketplace</div>
+          <div id="pr-p2"><i></i>eBay</div>
+          <div id="pr-p3"><i></i>Mercari</div>
+          <div id="pr-p4"><i></i>Craigslist</div>
+        </div>
+        <div class="mono s" data-layout-ignore>Source · Consumer Reports, “Popular Sites for Used Baby Gear Continue to Carry Banned and Recalled Items”</div>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const D = 27.8;
+
+    function cam(sel, t, s, cx, cy, dur) {
+      const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+      const x = clamp(960 - s * cx, 1920 - 1920 * s, 0);
+      const y = clamp(540 - s * cy, 1080 - 1080 * s, 0);
+      tl.to(sel, { scale: s, x: x, y: y, duration: dur || 0.9, ease: "power3.inOut" }, t);
+    }
+    function show(sel, t0, t1, fromY) {
+      tl.fromTo(sel, { opacity: 0, y: fromY === undefined ? 14 : fromY }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, t0);
+      if (t1 !== undefined) tl.to(sel, { opacity: 0, y: -8, duration: 0.35, ease: "power2.in" }, t1);
+    }
+
+
+    tl.fromTo("#pr-scan", { x: 0, opacity: 0 }, { x: 1334, opacity: 1, duration: 0.9, ease: "power2.inOut" }, 0.25);
+    tl.to("#pr-scan", { opacity: 0, duration: 0.2 }, 1.15);
+    tl.to("#pr-old", { opacity: 0, duration: 0.35 }, 0.7);
+    tl.fromTo("#pr-new", { opacity: 0, y: 16, immediateRender: false }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.95);
+    tl.fromTo("#pr-card", { x: -360, scale: 0.78 }, { x: 0, scale: 0.94, duration: 1.0, ease: "power3.inOut" }, 1.2);
+    tl.to("#pr-card", { scale: 0.975, duration: 7.4, ease: "none" }, 2.25);
+    tl.to("#pr-card", { scale: 1.0, duration: 4.2, ease: "none" }, 9.66);
+    tl.fromTo("#pr-stamp", { opacity: 0, scale: 1.5, rotation: -14 }, { opacity: 1, scale: 1, rotation: -8, duration: 0.45, ease: "back.out(2)" }, 9.7);
+    show("#pr-law", 10.1);
+    tl.to(["#pr-card", "#pr-stamp", "#pr-law"], { opacity: 0, y: -30, duration: 0.5, ease: "power2.in" }, 13.9);
+    show("#pr-line", 14.4, 20.9, 24);
+    tl.fromTo("#pr-cmp .col", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.5, ease: "power3.out" }, 17.2);
+    tl.fromTo("#pr-cmp .ne", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, 18.0);
+    tl.to("#pr-cmp", { opacity: 0, duration: 0.35 }, 20.9);
+    show("#pr-cr .k", 21.4); show("#pr-cr .h", 21.6, undefined, 24);
+    ["#pr-p1", "#pr-p2", "#pr-p3", "#pr-p4"].forEach((s, i) => tl.fromTo(s, { opacity: 0, y: 20, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 21.9 + i * 0.4));
+    show("#pr-cr .s", 23.6);
+
+    
+    tl.to("#pr-wrap", { opacity: 0, duration: 0.3, ease: "power1.in" }, D - 0.32);
+    window.__timelines["problem"] = tl;
+  </script>
+</template>

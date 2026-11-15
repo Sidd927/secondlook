@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #f5f2eb; }
+      #bg { position: absolute; inset: 0; background: #f5f2eb; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="153.0" data-width="1920" data-height="1080">
+      <div id="bg"></div>
+      <div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0.0" data-duration="11.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="problem" data-composition-id="problem" data-composition-src="compositions/problem.html" data-start="11.4" data-duration="27.8" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="meet" data-composition-id="meet" data-composition-src="compositions/meet.html" data-start="39.2" data-duration="14.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="demoa" data-composition-id="demoa" data-composition-src="compositions/demoa.html" data-start="53.6" data-duration="18.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="demob" data-composition-id="demob" data-composition-src="compositions/demob.html" data-start="72.0" data-duration="13.0" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="democ" data-composition-id="democ" data-composition-src="compositions/democ.html" data-start="85.0" data-duration="16.5" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="demod" data-composition-id="demod" data-composition-src="compositions/demod.html" data-start="101.5" data-duration="10.1" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="how" data-composition-id="how" data-composition-src="compositions/how.html" data-start="111.6" data-duration="29.6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="impact" data-composition-id="impact" data-composition-src="compositions/impact.html" data-start="141.2" data-duration="5.2" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="close" data-composition-id="close" data-composition-src="compositions/close.html" data-start="146.4" data-duration="6.6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="153.0"
+        data-track-index="2" data-track-kind="captions" data-width="1920" data-height="1080" style="z-index:5"></div>
+      <audio id="soundtrack" class="clip" data-start="0" data-duration="153.0" data-track-index="3" data-volume="1" src="assets/audio/mix.wav"></audio>
+    </div>
+    <script>
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<template>
+  <style>
+
+@font-face { font-family: "SL Serif"; src: url("assets/fonts/instrument-serif-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "SL Serif"; src: url("assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "SL Mono"; src: url("assets/fonts/geist-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "SL Mono"; src: url("assets/fonts/geist-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: "SL Sans", sans-serif; color: #15130f; }
+.paper { position: absolute; inset: 0; background: #f5f2eb; }
+.serif { font-family: "SL Serif", serif; font-weight: 400; letter-spacing: -0.01em; }
+.mono { font-family: "SL Mono", monospace; letter-spacing: 0.12em; text-transform: uppercase; }
+.red { color: #b3311a; }
+.callout { position: absolute; right: 64px; top: 56px; display: flex; align-items: center; gap: 16px;
+  background: #15130f; color: #f5f2eb; padding: 18px 28px; border-radius: 14px; font-size: 30px; font-weight: 500;
+  box-shadow: 0 18px 40px -18px rgba(21,19,15,.6); opacity: 0; }
+.callout .dot { width: 14px; height: 14px; border-radius: 50%; background: #e0583f; flex: none; }
+.callout .dot.amber { background: #e3a43b; } .callout .dot.green { background: #6fb38f; }
+.callout small { display: block; font-size: 28px; font-weight: 400; color: #cfc8ba; margin-top: 4px; }
+.chapter { position: absolute; left: 64px; top: 56px; background: #f5f2eb; color: #15130f; border: 2px solid #15130f;
+  padding: 14px 24px; border-radius: 12px; font-size: 28px; opacity: 0; box-shadow: 0 12px 30px -16px rgba(21,19,15,.5); }
+.chapter b { font-weight: 500; margin-right: 14px; color: #b3311a; }
+.cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+.cam video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+
+
+.lockup { position: absolute; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 34px; }
+.lockup svg { width: 150px; height: 150px; }
+.lockup .wm { font-size: 190px; line-height: 1; clip-path: inset(0 100% 0 0); }
+.tag { position: absolute; left: 0; right: 0; text-align: center; font-size: 66px; font-style: italic; color: #3b372f; opacity: 0; }
+
+#z-links { position: absolute; left: 0; right: 0; top: 660px; display: flex; justify-content: center; gap: 40px; }
+#z-links > div { background: #fbfaf6; border: 1px solid #d9d2c3; border-radius: 16px; padding: 20px 30px; display: flex; gap: 20px; align-items: baseline; opacity: 0; }
+#z-links .k { font-size: 20px; color: #b3311a; }
+#z-links .v { font-size: 36px; font-weight: 500; }
+#z-foot { position: absolute; left: 0; right: 0; top: 820px; text-align: center; font-size: 19px; color: #6b6458; opacity: 0; }
+
+  </style>
+  <div id="root" data-composition-id="close" data-width="1920" data-height="1080">
+
+    <div class="paper"></div>
+    <div id="z-wrap" style="position:absolute;inset:0">
+      <div class="lockup" style="top:250px"><svg viewBox="0 0 24 24" fill="none"><circle id="z-c" cx="10" cy="10" r="6.5" stroke="#15130f" stroke-width="1.9" pathLength="1"/>
+<path id="z-h" d="M15 15l5.5 5.5" stroke="#15130f" stroke-width="2.1" stroke-linecap="round" pathLength="1"/>
+<path id="z-k" d="M7.2 10.2l1.9 1.9 3.8-4" stroke="#b3311a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/></svg><div id="z-wm" class="serif wm">Second<i>Look</i></div></div>
+      <div id="z-tag" class="serif tag" style="top:520px">Look twice before you buy it used.</div>
+      <div id="z-links">
+        <div><span class="mono k">Try it</span><span class="v">secondlook-nu.vercel.app</span></div>
+        <div><span class="mono k">Code</span><span class="v">github.com/Sidd927/secondlook</span></div>
+      </div>
+      <div id="z-foot" class="mono" data-layout-ignore>Built for IceHacks 2026 · Recall data: U.S. Consumer Product Safety Commission</div>
+    </div>
+
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const D = 6.6;
+
+    function cam(sel, t, s, cx, cy, dur) {
+      const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+      const x = clamp(960 - s * cx, 1920 - 1920 * s, 0);
+      const y = clamp(540 - s * cy, 1080 - 1080 * s, 0);
+      tl.to(sel, { scale: s, x: x, y: y, duration: dur || 0.9, ease: "power3.inOut" }, t);
+    }
+    function show(sel, t0, t1, fromY) {
+      tl.fromTo(sel, { opacity: 0, y: fromY === undefined ? 14 : fromY }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, t0);
+      if (t1 !== undefined) tl.to(sel, { opacity: 0, y: -8, duration: 0.35, ease: "power2.in" }, t1);
+    }
+
+
+    tl.fromTo("#z-c", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 0.15);
+    tl.fromTo("#z-h", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 0.7000000000000001);
+    tl.fromTo("#z-k", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 0.9500000000000001);
+    tl.fromTo("#z-wm", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.8, ease: "power3.inOut" }, 0.6);
+    show("#z-tag", 1.2, undefined, 18);
+    tl.fromTo("#z-links > div", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.25, ease: "power3.out" }, 2.0);
+    show("#z-foot", 2.8);
+    tl.fromTo("#z-wrap .lockup", { scale: 1 }, { scale: 1.02, duration: 4.5, ease: "none" }, 1.6);
+
+    window.__timelines["close"] = tl;
+  </script>
+</template>

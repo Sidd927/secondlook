@@ -1,0 +1,77 @@
+<template>
+  <style>
+
+@font-face { font-family: "SL Serif"; src: url("assets/fonts/instrument-serif-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "SL Serif"; src: url("assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "SL Sans"; src: url("assets/fonts/geist-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "SL Mono"; src: url("assets/fonts/geist-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "SL Mono"; src: url("assets/fonts/geist-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: "SL Sans", sans-serif; color: #15130f; }
+.paper { position: absolute; inset: 0; background: #f5f2eb; }
+.serif { font-family: "SL Serif", serif; font-weight: 400; letter-spacing: -0.01em; }
+.mono { font-family: "SL Mono", monospace; letter-spacing: 0.12em; text-transform: uppercase; }
+.red { color: #b3311a; }
+.callout { position: absolute; right: 64px; top: 56px; display: flex; align-items: center; gap: 16px;
+  background: #15130f; color: #f5f2eb; padding: 18px 28px; border-radius: 14px; font-size: 30px; font-weight: 500;
+  box-shadow: 0 18px 40px -18px rgba(21,19,15,.6); opacity: 0; }
+.callout .dot { width: 14px; height: 14px; border-radius: 50%; background: #e0583f; flex: none; }
+.callout .dot.amber { background: #e3a43b; } .callout .dot.green { background: #6fb38f; }
+.callout small { display: block; font-size: 28px; font-weight: 400; color: #cfc8ba; margin-top: 4px; }
+.chapter { position: absolute; left: 64px; top: 56px; background: #f5f2eb; color: #15130f; border: 2px solid #15130f;
+  padding: 14px 24px; border-radius: 12px; font-size: 28px; opacity: 0; box-shadow: 0 12px 30px -16px rgba(21,19,15,.5); }
+.chapter b { font-weight: 500; margin-right: 14px; color: #b3311a; }
+.cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+.cam video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+
+#a-cam { transform-origin: 0 0; }
+  </style>
+  <div id="root" data-composition-id="demoa" data-width="1920" data-height="1080">
+
+    <div class="paper"></div>
+    <div id="a-wrap" style="position:absolute;inset:0">
+      <div class="cam" id="a-cam"><video id="a-vid" class="clip" data-start="0" data-duration="18.4" data-media-start="2.0" src="assets/footage/sleeper.mp4" muted playsinline></video></div>
+      <div id="a-ch" class="chapter mono"><b>01</b>Paste a listing</div>
+      <div id="a-c1" class="callout"><span class="dot amber"></span><div>Pasted exactly as listed</div></div>
+      <div id="a-c2" class="callout"><span class="dot"></span><div>Verdict: don’t buy</div></div>
+      <div id="a-c3" class="callout"><span class="dot"></span><div>Federal sale ban<small>with its legal citation</small></div></div>
+      <div id="a-c4" class="callout"><span class="dot"></span><div>The matching CPSC recall<small>hazard · reported deaths · official notice</small></div></div>
+    </div>
+
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const D = 18.4;
+
+    function cam(sel, t, s, cx, cy, dur) {
+      const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+      const x = clamp(960 - s * cx, 1920 - 1920 * s, 0);
+      const y = clamp(540 - s * cy, 1080 - 1080 * s, 0);
+      tl.to(sel, { scale: s, x: x, y: y, duration: dur || 0.9, ease: "power3.inOut" }, t);
+    }
+    function show(sel, t0, t1, fromY) {
+      tl.fromTo(sel, { opacity: 0, y: fromY === undefined ? 14 : fromY }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, t0);
+      if (t1 !== undefined) tl.to(sel, { opacity: 0, y: -8, duration: 0.35, ease: "power2.in" }, t1);
+    }
+
+
+    show("#a-ch", 0.2, 3.6);
+    show("#a-c1", 1.4, 5.6);
+    tl.fromTo("#a-cam", { scale: 1.32, x: 960 - 1.32 * 1372, y: 540 - 1.32 * 470 }, { scale: 1, x: 0, y: 0, duration: 0.8, ease: "power3.inOut" }, 6.0);
+    cam("#a-cam", 7.25, 1.38, 640, 280, 0.9);
+    show("#a-c2", 7.5, 9.1);
+    cam("#a-cam", 9.3, 1.24, 920, 340, 1.0);
+    show("#a-c3", 9.9, 13.4);
+    tl.to("#a-cam", { scale: "+=0.025", x: "-=24", y: "-=14", duration: 3.2, ease: "sine.inOut" }, 10.35);
+    cam("#a-cam", 13.65, 1.18, 990, 470, 1.1);
+    show("#a-c4", 14.2, 17.9);
+    tl.to("#a-cam", { scale: "+=0.025", x: "-=24", y: "-=14", duration: 3.5, ease: "sine.inOut" }, 14.8);
+
+    tl.fromTo("#a-wrap", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.out" }, 0);
+    tl.to("#a-wrap", { opacity: 0, duration: 0.3, ease: "power1.in" }, D - 0.32);
+    window.__timelines["demoa"] = tl;
+  </script>
+</template>

@@ -39,3 +39,21 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# demo-video production: large/regenerable media stays local (see submission/video/README.md)
+submission/video/raw/frames-*/
+submission/video/raw/webm/
+submission/video/raw/*.mp4
+submission/video/raw/.warm.png
+submission/video/renders/
+submission/video/final/*.mp4
+submission/video/audio/*.wav
+submission/video/film/assets/audio/
+submission/video/film/assets/footage/
+submission/video/film/node_modules/
+submission/video/film/.hyperframes/
+submission/video/capture/node_modules/
+submission/video/film/.transcode-cache/
+submission/video/film/.thumbnails/
+submission/video/film/.waveform-cache/
+submission/video/src/__pycache__/
