@@ -19,7 +19,7 @@ Paste a secondhand listing or snap its label. SecondLook checks it against U.S. 
 
 ### Thumbnail
 `submission/assets/devpost-thumbnail.png`
-- 1500 × 1000 px (3:2), PNG, 215 KB.
+- 1500 × 1000 px (3:2), PNG, 223 KB. Recaptured after the copy corrections.
 - Shows the SecondLook lockup, the tagline, a one-line purpose statement, and a real crop of the live app's "Don't buy this" verdict.
 
 ---

@@ -1,7 +1,7 @@
 # Deployment
 
 **Production URL:** https://secondlook-nu.vercel.app  
-**Host:** Vercel (Hobby/free tier), project `secondlook` under the `sidd927` account, deployed with the Vercel CLI from the `main` branch.
+**Host:** Vercel (Hobby/free tier), project `secondlook` under the `sidd927` account. **Pushes to `main` on GitHub deploy production automatically** (Vercel Git integration). `npx vercel deploy --prod` also works; `.vercelignore` keeps the local video and media files (over 100 MB) out of CLI uploads.
 
 ## What's deployed
 | Route | Type | Purpose |

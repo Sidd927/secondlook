@@ -1,11 +1,11 @@
 # Devpost Media Guide: SecondLook
 
-All media are genuine captures of the live app (https://secondlook-nu.vercel.app), taken Nov 15, 2026 by `submission/video/capture/gallery.mjs`. That script loads the production site, types and clicks for real, and uploads the sample label. No image is mocked or edited, and none contains personal data, credentials or API keys.
+All media are genuine captures of the live app (https://secondlook-nu.vercel.app), taken Nov 15, 2026 by `submission/video/capture/gallery.mjs` and recaptured after the live-app copy corrections (deployment of commit `264df07`). That script loads the production site, types and clicks for real, and uploads the sample label. No image is mocked or edited, and none contains personal data, credentials or API keys.
 
 ## Thumbnail (Project Overview → Thumbnail)
 | File | Size | Notes |
 |---|---|---|
-| `submission/assets/devpost-thumbnail.png` | 1500 × 1000 (3:2), 215 KB | The SecondLook lockup, the tagline "Look twice before you buy it used.", a one-line purpose statement and three fact chips (7,192 CPSC recalls · Federal ban rules · Label OCR), next to a real crop of the live "Don't buy this. It's illegal to sell." verdict. The source HTML is in `submission/assets/thumbnail-src/`. |
+| `submission/assets/devpost-thumbnail.png` | 1500 × 1000 (3:2), 223 KB | The SecondLook lockup, the tagline "Look twice before you buy it used.", a one-line purpose statement and three fact chips (7,192 CPSC recalls · Federal ban rules · Label OCR), next to a real crop of the live "Don't buy this. It's illegal to sell." verdict. The source HTML is in `submission/assets/thumbnail-src/`. |
 
 ## Image gallery (Project Details → Image gallery)
 Folder: `submission/assets/devpost-gallery/`. It contains exactly **nine** images: **six recommended (1–6) and three optional (7–9)**. Every image is a 2400 × 1600 (3:2) PNG under 1 MB. Upload in this order. The order tells the story: input → verdict → evidence → photo → action → scale.

@@ -67,13 +67,41 @@ Audited Nov 15, 2026, about 03:00 PT. **Deadline: Sun Nov 15, 2026, 6:00 PM PT (
 5. **Tags.** Each of the 19 tags was checked against the repo (the mapping is in the Devpost doc). Claude Code is kept in the tags and the disclosure. The Anthropic API is not listed.
 6. **AI disclosure.** States: deterministic rules engine; browser-based Tesseract.js OCR as the only live ML; the optional Anthropic integration disabled; Claude Code used during development; synthetic narration in the video.
 
-### Known inconsistencies in the live app copy (not changed, per instruction not to modify the app)
-These are display strings in the deployed app. They're also visible in the gallery screenshots and the demo video:
-- `src/app/page.tsx`: the landing fact card reads "≈1 in 3 — Recalled units never refunded, replaced or repaired…" (the same derived claim removed from the docs).
-- `src/app/page.tsx` / `how-it-works/page.tsx`: "Free, no account, nothing stored" / "Nothing you paste is stored". These are broader than the precise statement above.
-- `src/lib/bans.ts`: the inclined-sleeper summary says "illegal to sell them, new or used, no matter when they were made". The statute's text bans manufacture, sale, distribution and import, but whether that covers private resale of units made before the ban isn't confirmed by a primary source we checked.
+### Live-app copy corrections (deployed)
+Text-only changes in three files: `src/app/page.tsx`, `src/app/how-it-works/page.tsx` and the inclined-sleeper `summary` string in `src/lib/bans.ts`. There were no engine, API, data, dependency or design changes.
 
-A copy-only fix is possible (no logic change), but the published video and the screenshots would keep showing the old wording.
+| Before | After |
+|---|---|
+| Landing fact card "≈1 in 3: recalled units never refunded, replaced or repaired…" | "65%: overall correction rate CPSC staff reported across 865 closed Section 15 cases (FY 2014–2016). It counts corrections by manufacturers, distributors, retailers and consumers together." |
+| "Free, no account, nothing stored" | "Free, no account, no database" |
+| "Nothing you paste is stored." (How it works) | No account and no application database. Discloses in-memory rate-limit data (IP and request times), the hosting provider's error logs, and listing text in shareable URLs. Label photos are read in the browser and not uploaded while the AI step is off. |
+| Inclined sleepers: "illegal to sell them, new or used, no matter when they were made" | "…banned hazardous products under the Safe Sleep for Babies Act, which prohibits their manufacture, sale, distribution and import in the U.S." |
+
+**Verification:**
+- `npm run build` ✓.
+- `npx tsx scripts/smoke.mts`: all 10 listings return the same verdicts as before (engine unchanged).
+- Production deployed by the GitHub push (Vercel Git integration).
+- Live HTML contains the new strings, and the old strings are absent.
+- `POST /api/check` returns the new ban summary.
+
+**Recaptured:** gallery `01`, `02`, `04`, `05`, `07` and `09` (content changed), the full set re-shot; `devpost-thumbnail.png`; and the README's `docs/screenshots/home.png`, `result-banned.png` and `how-it-works.png`.
+
+### Published video vs. the corrected app (not changed; needs your approval)
+Checked frame by frame on the master file, which is the same render as https://youtu.be/q6ousB0I6-I.
+
+| Outdated on-screen text (live-app footage) | Where | Timestamps |
+|---|---|---|
+| Hero bullet "Free, no account, nothing stored" | Brand-reveal landing shot; start of each demo before the camera punches in | **0:45.0–0:50.0**, **0:59.6–1:00.3**, **1:12.0–1:14.0**, **1:17.7–1:18.3**, **1:25.0–1:27.7** |
+| Inclined-sleeper ban card "…illegal to sell them, new or used, no matter when they were made…" | Demo 1 (pasted listing) and Demo 2 (label photo) result screens; readable when the camera punches in on the ban card | **1:00.4–1:07.4** (in close-up 1:03.3–1:07.3), **1:18.4–1:25.0** |
+| "≈1 in 3" fact card | Not visible anywhere in the film | — |
+
+The narration, captions and motion-graphic scenes contain none of the three claims.
+
+**Fix feasibility (no full rebuild needed):** the pipeline is reproducible from `submission/video/`.
+1. Re-run `capture.mjs` for the four affected clips (landing, sleeper, photo, swing) against the corrected site. Check event markers and nudge `FOOTAGE` media offsets if the timing shifted.
+2. Rebuild the scenes and re-render.
+
+Narration, music, graphics and captions stay as they are, and the work is roughly 20–30 minutes including QA. The catch is that YouTube can't replace a file under an existing URL. A fix means a **new upload and a new link** in Devpost, the README and the docs.
 
 ## Outstanding manual actions (owner: Siddhant)
 1. Fill in the Devpost form from `submission/DEVPOST_SUBMISSION.md`, upload the thumbnail and gallery, and select the prizes.
