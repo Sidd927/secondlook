@@ -155,7 +155,7 @@ const STRENGTH = {
 function RecallCard({ c, defaultOpen }: { c: Candidate; defaultOpen: boolean }) {
   const r = c.recall;
   const s = STRENGTH[c.strength];
-  const units = r.products.map((p) => p.units).find(Boolean);
+  const units = r.products.map((p) => p.units).find(Boolean)?.split("(")[0].trim();
   return (
     <article className="overflow-hidden rounded-xl border hairline bg-card">
       <div className="grid gap-0 sm:grid-cols-[180px_1fr]">
