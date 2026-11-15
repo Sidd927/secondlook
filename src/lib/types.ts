@@ -50,6 +50,8 @@ export type MatchStrength = "strong" | "possible" | "weak";
 export interface Candidate {
   recall: Recall;
   score: number;
+  /** Two-word product phrases shared with the recall title/product names (e.g. "rock play"). */
+  phraseHits?: number;
   strength: MatchStrength;
   signals: string[]; // human-readable reasons this recall surfaced
   checks: string[]; // identifiers a buyer must verify on the physical item

@@ -22,15 +22,17 @@ export function SiteHeader() {
         <Link href="/" aria-label="SecondLook home" className="text-ink">
           <Wordmark />
         </Link>
-        <nav aria-label="Primary" className="flex items-center gap-1 text-[14px]">
-          <Link href="/#check" className="rounded-md px-3 py-1.5 text-ink-2 hover:bg-paper-2 hover:text-ink">
-            Check a listing
+        <nav aria-label="Primary" className="flex items-center gap-0.5 whitespace-nowrap text-[14px]">
+          <Link href="/#check" aria-label="Check a listing" className="rounded-md px-2 py-1.5 text-ink-2 sm:px-3 hover:bg-paper-2 hover:text-ink">
+            <span className="sm:hidden">Check</span>
+            <span className="hidden sm:inline">Check a listing</span>
           </Link>
-          <Link href="/batch" className="hidden rounded-md px-3 py-1.5 text-ink-2 hover:bg-paper-2 hover:text-ink sm:inline-block">
-            Batch check
+          <Link href="/batch" aria-label="Batch check" className="rounded-md px-2 py-1.5 text-ink-2 sm:px-3 hover:bg-paper-2 hover:text-ink">
+            Batch<span className="hidden sm:inline"> check</span>
           </Link>
-          <Link href="/how-it-works" className="rounded-md px-3 py-1.5 text-ink-2 hover:bg-paper-2 hover:text-ink">
-            How it works
+          <Link href="/how-it-works" aria-label="How it works" className="rounded-md px-2 py-1.5 text-ink-2 sm:px-3 hover:bg-paper-2 hover:text-ink">
+            <span className="sm:hidden">Method</span>
+            <span className="hidden sm:inline">How it works</span>
           </Link>
         </nav>
       </div>

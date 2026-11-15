@@ -115,7 +115,7 @@ export function Checker({ intro }: { intro: React.ReactNode }) {
 
   return (
     <>
-    <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-14">
+    <div className="grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:gap-14">
       <div className="lg:pt-6">{intro}</div>
       <div id="check" className="scroll-mt-20">
       <form

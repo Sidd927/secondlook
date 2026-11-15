@@ -37,7 +37,7 @@ export function ResultView({ result }: { result: CheckResult }) {
       </div>
 
       {/* What we understood */}
-      <div className="grid gap-px overflow-hidden rounded-xl border hairline bg-rule sm:grid-cols-4">
+      <div className="grid gap-px overflow-hidden rounded-xl border hairline bg-rule grid-cols-2 sm:grid-cols-4">
         <Fact label="Brand" value={p.brand ? titleCase(p.brand) : "Not identified"} muted={!p.brand} />
         <Fact label="Product" value={p.productLine ?? p.productType ?? "Not identified"} muted={!p.productLine && !p.productType} />
         <Fact label="Model / UPC" value={p.modelNumbers.length ? p.modelNumbers.join(", ") : "None given"} muted={!p.modelNumbers.length} mono />
@@ -155,7 +155,8 @@ const STRENGTH = {
 function RecallCard({ c, defaultOpen }: { c: Candidate; defaultOpen: boolean }) {
   const r = c.recall;
   const s = STRENGTH[c.strength];
-  const units = r.products.map((p) => p.units).find(Boolean)?.split("(")[0].trim();
+  const rawUnits = r.products.map((p) => p.units).find(Boolean)?.split("(")[0].trim();
+  const units = rawUnits && rawUnits.length <= 40 ? rawUnits : undefined;
   return (
     <article className="overflow-hidden rounded-xl border hairline bg-card">
       <div className="grid gap-0 sm:grid-cols-[180px_1fr]">

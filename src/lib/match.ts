@@ -109,9 +109,12 @@ export function searchRecalls(text: string, profile: ListingProfile, corpus: Cor
         line.has(t) &&
         !t.split("_").some((p) => brandTokens.has(p)) &&
         !genericProduct.has(t) &&
-        (q.get(t) ?? 0) >= 1 &&
+        (q.get(t) ?? 0) >= 0.6 &&
         (index.df.get(t) ?? 0) < N * 0.03,
     );
+    // Concept expansions may support a match but can't create one on their own.
+    const anchored = lineOverlap.some((t) => (q.get(t) ?? 0) >= 1);
+    if (!anchored) lineOverlap.length = 0;
     const bigramOverlap = lineOverlap.filter((t) => t.includes("_"));
     const model = modelHits.get(d);
 
@@ -133,7 +136,14 @@ export function searchRecalls(text: string, profile: ListingProfile, corpus: Cor
           .join(", ")}`,
       );
 
-    results.push({ recall: recalls[d], score, strength, signals, checks: identifyingChecks(recalls[d]) });
+    results.push({
+      recall: recalls[d],
+      score,
+      phraseHits: bigramOverlap.length,
+      strength,
+      signals,
+      checks: identifyingChecks(recalls[d]),
+    });
   }
 
   results.sort((a, b) => rank(b) - rank(a));
@@ -148,7 +158,8 @@ function rank(c: Candidate) {
   const tier = c.strength === "strong" ? 2000 : c.strength === "possible" ? 1000 : 0;
   const text = `${c.recall.title} ${c.recall.injuries}`.toLowerCase();
   const severity = /\bdeaths?\b|\bdied\b|fatal/.test(text) ? 2.5 : /injur|burn|lacerat/.test(text) ? 1.2 : 1;
-  return tier + Math.min(c.score * severity, 999);
+  // Exact product-line phrases ("rock play") dominate severity, so the named product comes first.
+  return tier + Math.min(c.phraseHits ?? 0, 2) * 250 + Math.min(c.score * severity, 240);
 }
 
 /**

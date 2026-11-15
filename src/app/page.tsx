@@ -49,19 +49,19 @@ export default function Home() {
   return (
     <>
       <section className="grain border-b hairline">
-        <div className="mx-auto max-w-6xl px-5 pb-16 pt-14 sm:pt-20">
+        <div className="mx-auto max-w-6xl px-5 pb-16 pt-10 sm:pt-20">
           <Checker
             intro={
               <>
                 <p className="eyebrow">Pre-purchase safety check · U.S. CPSC data</p>
-              <h1 className="serif mt-4 text-[52px] leading-[0.98] sm:text-[72px]">
+              <h1 className="serif mt-4 text-[46px] leading-[0.98] sm:text-[72px]">
                 Look twice before you buy it <span className="italic">used.</span>
               </h1>
               <p className="mt-6 max-w-md text-[17px] leading-relaxed text-ink-2">
                 Paste a Marketplace or Craigslist listing, or snap the label. SecondLook checks it against U.S. product recalls and
                 federal sale bans, then tells you exactly what to ask the seller.
               </p>
-              <ul className="mt-8 space-y-2.5 text-[14px] text-ink-2">
+              <ul className="mt-8 hidden space-y-2.5 text-[14px] text-ink-2 sm:block">
                 <li className="flex gap-3">
                   <span className="mt-[9px] h-px w-5 bg-ink" aria-hidden /> Built for parents buying secondhand baby gear
                 </li>

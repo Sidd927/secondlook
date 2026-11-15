@@ -18,3 +18,8 @@ for (const c of cases) {
   for (const b of r.bans) console.log("  BAN", b.id);
   for (const k of r.candidates) console.log("  ", k.strength.padEnd(8), k.score.toFixed(1).padStart(6), k.recall.date, k.recall.title.slice(0, 100));
 }
+{
+  const r = await runCheck({ text: "Text read from photo:\nFISHER-PRICE\nRock 'n Play Sleeper\nModel No. CHP55\nDate Code: 2316 2017" });
+  console.log("\n=== OCR label");
+  for (const k of r.candidates) console.log("  ", k.strength.padEnd(8), k.phraseHits, k.recall.title.slice(0, 90));
+}
