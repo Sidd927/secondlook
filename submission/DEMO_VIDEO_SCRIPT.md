@@ -1,6 +1,6 @@
 # Demo Video Script
 
-The demo film is produced: **2:33**, 1920×1080, 30 fps. This earlier recording script has been replaced by the production files:
+The demo film is published: **https://youtu.be/q6ousB0I6-I** (2:33, 1920×1080, 30 fps). This earlier recording script has been replaced by the production files:
 
 - **Final film:** `submission/video/final/SecondLook_IceHacks_2026_Demo.mp4` (not in git because of its size). Subtitles are in `...Demo.srt`.
 - **Narration, timestamps, delivery and pronunciation notes, and how to swap in your own voice:** [`video/VOICEOVER_SCRIPT.md`](video/VOICEOVER_SCRIPT.md)

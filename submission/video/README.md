@@ -1,6 +1,6 @@
 # SecondLook Demo Film: Production
 
-**Final film:** `final/SecondLook_IceHacks_2026_Demo.mp4`. It's kept out of git because it's 114 MB, over GitHub's file limit. Publish it to YouTube.
+**Final film:** published at **https://youtu.be/q6ousB0I6-I** (Public). The master file, `final/SecondLook_IceHacks_2026_Demo.mp4`, is kept out of git because it's 114 MB, over GitHub's file limit.
 
 - **Format:** 2:33 · 1920×1080 · 30 fps · H.264 High (CRF 12) · AAC-LC 48 kHz stereo
 - **Audio:** −14.3 LUFS integrated, −1.4 dBTP true peak

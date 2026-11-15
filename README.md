@@ -5,7 +5,7 @@
 SecondLook checks a secondhand listing, or a photo of its label, against every U.S. Consumer Product Safety Commission (CPSC) recall since 2005 and against federal sale bans. It then tells you exactly what to ask the seller before you pay.
 
 **Live app:** https://secondlook-nu.vercel.app  
-**Demo video (2:33):** public link coming once it's uploaded. The film is built from real footage of the live app (production sources in [`submission/video/`](submission/video/README.md))  
+**Demo video (2:33):** https://youtu.be/q6ousB0I6-I. Built from real footage of the live app; production sources are in [`submission/video/`](submission/video/README.md).  
 Built for [IceHacks 2026](https://icehacks.devpost.com/).
 
 ![SecondLook flags a "baby sleeper/rocker" listing as a banned, recalled product](docs/screenshots/result-banned.png)

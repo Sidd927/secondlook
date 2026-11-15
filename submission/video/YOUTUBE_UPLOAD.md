@@ -1,4 +1,8 @@
-# Publishing the Demo Video (about 5 minutes)
+# Publishing the Demo Video
+
+**Status: published.** https://youtu.be/q6ousB0I6-I. Verified Public (not unlisted or private), 153 s, plays signed out (checked Nov 15, 2026).
+
+The steps and metadata below are kept for reference.
 
 **File to upload:** `submission/video/final/SecondLook_IceHacks_2026_Demo.mp4` (2:33, 1080p30, 114 MB)
 
