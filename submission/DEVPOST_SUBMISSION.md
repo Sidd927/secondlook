@@ -9,7 +9,7 @@ Check a secondhand listing against U.S. recalls and federal sale bans before you
 ## Links
 - **Live app:** https://secondlook-nu.vercel.app
 - **Code:** https://github.com/Sidd927/secondlook
-- **Demo video:** _add the public YouTube/Vimeo link after uploading (required: projects without a working video link are not judged)_
+- **Demo video (2:33):** **PENDING — paste the public YouTube link here after upload.** The file is `submission/video/final/SecondLook_IceHacks_2026_Demo.mp4`. Projects without a working video link are not judged.
 
 ---
 
@@ -24,7 +24,7 @@ Selling a recalled product is already illegal. What's missing is the check, at t
 You paste a listing, or snap a photo of the product's label, and SecondLook returns one of three verdicts in about a second:
 
 - **Don't buy:** the item is in a federally banned category, or it matches a recall by model number.
-- **Verify first:** it matches a recall, but recalls usually cover specific model numbers or date codes, so it shows exactly which ones.
+- **Verify first:** it matches a recall, but many recalls cover only specific model numbers or date codes, so it shows exactly which ones.
 - **No matching recall:** with a clear note that this isn't a safety guarantee, and what to inspect in person.
 
 Every result includes:
@@ -62,12 +62,12 @@ Every result includes:
 
 ## Accomplishments we're proud of
 - It works on the messy input real people have: a vague listing, or a photo of a sticker.
-- Every verdict is traceable to a CPSC notice or a cited law; nothing is a black box.
+- Every flag is traceable to a CPSC notice or a cited law; nothing is a black box.
 - It turns a recall notice into an action: the questions to send the seller.
 - It's live, public and fast (about 0.5 s per warm check), with no account and nothing stored.
 
 ## What we learned
-- Most recalls are conditional (model ranges, date codes), so "matches a recall" is rarely the whole answer. The useful output is *what to verify*.
+- Many recalls are conditional (model ranges, date codes), so "matches a recall" is often not the whole answer. The useful output is *what to verify*.
 - The best use of an LLM here is narrow: reading messy input and judging retrieved evidence. Legal facts stay in deterministic code.
 - Public government data (the CPSC API) is rich enough to build a real product on, if you put in the work to normalize it.
 
@@ -79,15 +79,26 @@ Every result includes:
 - Partnering with organizations that run baby-gear swaps and donation drives
 
 ## Built with
-TypeScript · Next.js 16 · React 19 · Tailwind CSS v4 · Node.js · Anthropic Claude API (`@anthropic-ai/sdk`; optional integration, not enabled in the live demo) · Zod · Tesseract.js · Lucide · Vercel · CPSC Recalls REST API · GitHub · Claude Code (AI coding assistant, disclosed)
+**App:** TypeScript · Next.js 16 · React 19 · Tailwind CSS v4 · Node.js · Zod · Tesseract.js · Lucide · Vercel · CPSC Recalls REST API · GitHub
+
+**Optional, not enabled in the live demo:** Anthropic Claude API (`@anthropic-ai/sdk`)
+
+**Demo video:** HyperFrames · GSAP · Playwright · FFmpeg · Kokoro-82M (local text-to-speech) · Pixabay sound effects
+
+**AI tools used to build it (disclosed):** Claude Code
 
 ## AI tools disclosure
-SecondLook was built with substantial assistance from **Claude Code** (Anthropic), which was used for research, design, most of the implementation and documentation. The team directed and reviewed the work and can explain every part of it. The product includes an optional Claude integration (listing understanding and recall adjudication), but it is **not enabled** in the public deployment, which runs the rules engine and says so on every result.
+- **Building it:** SecondLook was built with substantial assistance from **Claude Code** (Anthropic), which was used for research, design, most of the implementation, the demo-video production and documentation. The team directed and reviewed the work and can explain every part of it.
+- **In the product:** there's an optional Claude integration (listing understanding and recall adjudication), but it is **not enabled** in the public deployment. The live app runs the deterministic rules engine and says so on every result. Label OCR (Tesseract.js) runs in the browser.
+- **In the video:** the narration is synthetic, generated locally with Kokoro-82M. The music is original and was synthesized for the film. All product footage is real screen capture of the live app.
 
 ## Tracks to select
-- **Best AI Hack:** the track explicitly counts AI app builders and vibe-coding tools. The project was built with Claude Code, runs in-browser ML OCR, and includes an optional, retrieval-grounded Claude layer (not enabled live; say so if asked)
-- **Best Deployed / Shipped App:** public URL, live data refresh, graceful degradation, complete docs
-- **Best Design & UX:** a distinctive visual identity, accessible contrast, keyboard/skip-link support, responsive layout
-- *(Overall is judged automatically)*
+Each project can win only one track, so entering every track that genuinely fits costs nothing.
 
-Not selected: Best Hardware Hack (no physical component).
+| Track | Enter? | Why |
+|---|---|---|
+| **Best Deployed / Shipped App** | **Yes (strongest fit)** | Public URL, live CPSC data refresh, graceful degradation, batch mode, full docs and README. Matches "working public URL, reliability, completeness and docs". |
+| **Best Design & UX** | **Yes** | Distinctive visual identity, clear verdict hierarchy, accessible contrast, skip link and focus states, responsive layout. |
+| **Best AI Hack** | **Yes, with honest framing (ambiguous)** | The official description counts "AI app builders and vibe-coding tools", and we built with Claude Code. But the live product's only ML is in-browser OCR; the Claude layer is optional and off. Judges weigh "smart use of the tools", so AI-native projects may score higher. Say this plainly if asked. |
+| Overall (1st–3rd) | Automatic | Judged on all five criteria. |
+| Best Hardware Hack | No | No physical component. |

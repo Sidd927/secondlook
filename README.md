@@ -5,7 +5,7 @@
 SecondLook checks a secondhand listing, or a photo of its label, against every U.S. Consumer Product Safety Commission (CPSC) recall since 2005 and against federal sale bans. It then tells you exactly what to ask the seller before you pay.
 
 **Live app:** https://secondlook-nu.vercel.app  
-**Demo video:** _link added after recording_  
+**Demo video (2:33):** public link coming once it's uploaded. The film is built from real footage of the live app (production sources in [`submission/video/`](submission/video/README.md))  
 Built for [IceHacks 2026](https://icehacks.devpost.com/).
 
 ![SecondLook flags a "baby sleeper/rocker" listing as a banned, recalled product](docs/screenshots/result-banned.png)
@@ -19,6 +19,14 @@ A recall stops new sales. It doesn't stop resales.
 - Across 865 closed CPSC recalls (FY2014–2016), the overall correction rate was **65%**, even counting corrections by manufacturers, distributors and retailers. Roughly **1 in 3 recalled units was never refunded, replaced or repaired** ([CPSC Recall Effectiveness Workshop report, 2018](https://www.cpsc.gov/s3fs-public/Recall_Effectiveness_Workshop_Report-2018.pdf)). Some of those end up on Facebook Marketplace, Craigslist and garage-sale tables.
 - In 2026, Consumer Reports found banned infant products (inclined sleepers, drop-side cribs, padded crib bumpers, in-bed sleepers) listed on **every major resale platform** ([Consumer Reports](https://www.consumerreports.org/babies-kids/how-to-avoid-unsafe-used-baby-gear-when-shopping-online-a7805010094/)).
 - Selling a recalled product is already illegal ([15 U.S.C. § 2068](https://www.law.cornell.edu/uscode/text/15/2068)). But the official search tools expect the exact product name or model number, and listings rarely have either. Consumer Reports found the recalled Rock 'n Play listed as "baby sleeper/rocker", "floor cradle" and "bassinet".
+
+## Try it in 30 seconds
+
+1. Open https://secondlook-nu.vercel.app.
+2. Click the **"Baby sleeper/rocker"** example: a vague listing gets flagged as a banned, recalled product, with the actual CPSC notice.
+3. Click **"Infant swing"**: a narrower recall. Copy the seller message and see which models the notice covers.
+4. Click **Add label photo** and upload [`submission/assets/sample-label.png`](submission/assets/sample-label.png): text is read in your browser, and the model number feeds the check.
+5. Open **Batch check** → **Load sample intake list** → **Export CSV**.
 
 ## What SecondLook does
 
@@ -159,7 +167,9 @@ scripts/                   snapshot sync + smoke test
 
 ## AI-assisted development disclosure
 
-This project was built during IceHacks 2026 (Nov 15, 2026) with substantial help from **Claude Code (Anthropic)**, an AI coding assistant. It was used for research, product strategy, most of the code, and documentation. The team directed the work, reviewed it, and is responsible for the result. The running product uses Claude through the Anthropic API as described above.
+- **Building it:** this project was built during IceHacks 2026 (Nov 15, 2026) with substantial help from **Claude Code (Anthropic)**, an AI coding assistant. It was used for research, product strategy, most of the code, the demo-video production and documentation. The team directed the work, reviewed it, and is responsible for the result.
+- **In the product:** the optional Claude integration described above is **not enabled** in the public deployment. The live app runs the deterministic rules engine.
+- **In the video:** the narration is synthetic (Kokoro-82M, generated locally), the music is original and was synthesized in code, and every product shot is real screen capture of the live app.
 
 ## Credits
 
