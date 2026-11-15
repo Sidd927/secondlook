@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/* SecondLook design tokens — "printed safety notice": warm paper, dense ink, one signal color per verdict. */
+:root {
+  --paper: #f5f2eb;
+  --paper-2: #ece7dc;
+  --card: #fbfaf6;
+  --ink: #15130f;
+  --ink-2: #3b372f;
+  --muted: #6b6458;
+  --rule: #d9d2c3;
+  --rule-strong: #b9b0a0;
+
+  --stop: #b3311a;
+  --stop-bg: #f8e6e0;
+  --stop-ink: #6e1d0f;
+  --caution: #a8650f;
+  --caution-bg: #f7ead3;
+  --caution-ink: #5e3906;
+  --clear: #2d6a4c;
+  --clear-bg: #e2eee6;
+  --clear-ink: #183f2c;
+
+  --focus: #1f5fbf;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-stop: var(--stop);
+  --color-stop-bg: var(--stop-bg);
+  --color-stop-ink: var(--stop-ink);
+  --color-caution: var(--caution);
+  --color-caution-bg: var(--caution-bg);
+  --color-caution-ink: var(--caution-ink);
+  --color-clear: var(--clear);
+  --color-clear-bg: var(--clear-bg);
+  --color-clear-ink: var(--clear-ink);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-serif-display);
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: #15130f;
+  color: #f5f2eb;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.serif {
+  font-family: var(--font-serif-display), ui-serif, Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hairline {
+  border-color: var(--rule);
+}
+
+/* Subtle paper grain without images */
+.grain {
+  background-image: radial-gradient(rgba(21, 19, 15, 0.035) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.42s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+.scanbar {
+  animation: scan 1.3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .scanbar {
+    animation: none;
+  }
+}
