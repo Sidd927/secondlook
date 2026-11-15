@@ -47,9 +47,9 @@
 ### 1:50–2:10 · How it's built
 **Screen:** /how-it-works page; scroll through Data → Matching → AI. Optionally flash the README architecture diagram on GitHub.
 
-> "Under the hood: a snapshot of 7,192 CPSC recalls that refreshes live from the CPSC API, a rules engine for federal bans with legal citations, and a custom matching engine. It translates listing slang into recall vocabulary, resolves brands and matches model numbers. Claude is used narrowly, to read messy listings and photos and judge the recalls the engine found. It can't invent a recall, and it never decides what's legal."
+> "Under the hood: a snapshot of 7,192 CPSC recalls that refreshes live from the CPSC API, a rules engine for federal bans with legal citations, and a custom matching engine. It translates listing slang into recall vocabulary, resolves brands and matches model numbers."
 
-> "What you saw runs entirely on the deterministic rules engine; every result says so. There's an optional Claude layer in the code for photo understanding and per-recall judgments, which we kept off for this demo."
+> "What you saw runs entirely on the deterministic rules engine; every result says so. There's an optional Claude layer in the code for photo understanding and per-recall judgments, which we kept off for this demo. Even when it's on, it can only judge recalls the engine retrieved and never decides what's legal."
 
 ### 2:10–2:20 · Close
 **Screen:** back to the hero headline.
