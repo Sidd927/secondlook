@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { AlertOctagon, AlertTriangle, CheckCircle2, Copy, Check, ExternalLink, Gavel, Sparkles, Cpu } from "lucide-react";
+import { useEffect, useState } from "react";
+import { AlertOctagon, AlertTriangle, CheckCircle2, Copy, Check, ExternalLink, Gavel, Sparkles, Cpu, Link2 } from "lucide-react";
 import type { Candidate, CheckResult } from "@/lib/types";
 
 const VERDICT = {
@@ -32,7 +32,10 @@ export function ResultView({ result }: { result: CheckResult }) {
           </p>
           <h2 className={`serif mt-2 text-[34px] leading-[1.05] sm:text-[44px] ${v.ink}`}>{result.headline}</h2>
           <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-ink-2">{result.explanation}</p>
-          <EngineLine result={result} />
+          <div className="mt-5 flex flex-wrap items-end justify-between gap-3">
+            <EngineLine result={result} />
+            <ShareLink />
+          </div>
         </div>
       </div>
 
@@ -121,7 +124,7 @@ export function ResultView({ result }: { result: CheckResult }) {
 function EngineLine({ result }: { result: CheckResult }) {
   const e = result.engine;
   return (
-    <p className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] text-muted">
+    <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] text-muted">
       <span className="inline-flex items-center gap-1">
         {e.mode === "ai" ? <Sparkles className="h-3 w-3" aria-hidden /> : <Cpu className="h-3 w-3" aria-hidden />}
         {e.mode === "ai" ? `AI-assisted (${e.model})` : "Rules engine (AI off)"}
@@ -274,4 +277,25 @@ function OwnerNote({ c }: { c: Candidate }) {
 
 function titleCase(s: string) {
   return s.replace(/\b\w/g, (m) => m.toUpperCase());
+}
+
+function ShareLink() {
+  const [copied, setCopied] = useState(false);
+  const [shareable, setShareable] = useState(false);
+  useEffect(() => setShareable(new URLSearchParams(window.location.search).has("q")), []);
+  if (!shareable) return null;
+  return (
+    <button
+      type="button"
+      onClick={async () => {
+        await navigator.clipboard.writeText(window.location.href);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1800);
+      }}
+      className="inline-flex items-center gap-1.5 rounded-md border border-ink/20 bg-card/70 px-2.5 py-1 text-[12px] text-ink-2 hover:border-ink hover:text-ink"
+    >
+      {copied ? <Check className="h-3.5 w-3.5" aria-hidden /> : <Link2 className="h-3.5 w-3.5" aria-hidden />}
+      {copied ? "Link copied" : "Copy link to this check"}
+    </button>
+  );
 }
