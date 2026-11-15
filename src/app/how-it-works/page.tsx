@@ -43,7 +43,12 @@ export default function HowItWorks() {
             injuries and retailer information. At runtime the server asks the same API for anything published after the snapshot and
             merges it in. That refreshes every six hours, so a recall announced this week is searchable today.
           </p>
-          <p>Nothing you paste is stored. Checks are processed in memory and discarded.</p>
+          <p>
+            There's no account and no application database: SecondLook doesn't save the listings you check. The server briefly holds
+            rate-limit data (IP address and request times) in memory, errors go to the hosting provider's logs, and a shareable link
+            carries the listing text in its URL. Label photos are read in your browser. With the AI step off, as in this deployment,
+            they aren't uploaded.
+          </p>
         </Section>
 
         <Section id="bans" eyebrow="02 · Law" title="Federal sale bans, applied as rules">

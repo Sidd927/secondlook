@@ -3,8 +3,8 @@ import { Checker } from "@/components/Checker";
 
 const FACTS = [
   {
-    figure: "≈1 in 3",
-    text: "Recalled units never refunded, replaced or repaired, even counting retailers and manufacturers (65% overall correction rate across 865 closed CPSC recalls, FY2014–2016).",
+    figure: "65%",
+    text: "Overall correction rate CPSC staff reported across 865 closed Section 15 cases (FY 2014–2016). It counts corrections by manufacturers, distributors, retailers and consumers together.",
     source: "CPSC Recall Effectiveness Workshop report, 2018",
     href: "https://www.cpsc.gov/s3fs-public/Recall_Effectiveness_Workshop_Report-2018.pdf",
   },
@@ -66,7 +66,7 @@ export default function Home() {
                   <span className="mt-[9px] h-px w-5 bg-ink" aria-hidden /> Built for parents buying secondhand baby gear
                 </li>
                 <li className="flex gap-3">
-                  <span className="mt-[9px] h-px w-5 bg-ink" aria-hidden /> Free, no account, nothing stored
+                  <span className="mt-[9px] h-px w-5 bg-ink" aria-hidden /> Free, no account, no database
                 </li>
                 <li className="flex gap-3">
                   <span className="mt-[9px] h-px w-5 bg-ink" aria-hidden /> Every result links to the official CPSC notice

@@ -21,7 +21,7 @@ const RULES: BanRule[] = [
     title: "Inclined infant sleepers are banned",
     severity: "banned",
     summary:
-      "Infant sleep products with a sleep surface inclined more than 10° are banned hazardous products. It is illegal to sell them, new or used, no matter when they were made. The Fisher-Price Rock 'n Play is the best-known example.",
+      "Inclined sleepers for infants (sleep surface inclined more than 10°) are banned hazardous products under the Safe Sleep for Babies Act, which prohibits their manufacture, sale, distribution and import in the U.S. The Fisher-Price Rock 'n Play is the best-known example.",
     law: "Safe Sleep for Babies Act of 2022 (Pub. L. 117-126); CPSC final rule effective Sept. 15, 2023",
     sourceUrl:
       "https://www.cpsc.gov/Newsroom/News-Releases/2023/CPSC-Approves-Rules-Implementing-Bans-on-Inclined-Sleepers-for-Infants-and-Crib-Bumpers",
