@@ -2,7 +2,7 @@
 
 Audited Nov 15, 2026, about 03:00 PT. **Deadline: Sun Nov 15, 2026, 6:00 PM PT (Mon Nov 16, 7:30 AM IST).** Solo entry by Siddhant Patil.
 
-**Final submission commit:** `a324b6a56365458f10cb5a86880a5819552955db` (`a324b6a`) on `main`, which holds the corrected Devpost copy. The next commit only records this hash in this file.
+**Final submission commit:** `3e1faedd37b1f4769ebf1a71480a6b2410e09b1e` (`3e1faed`) on `main`, which holds the corrected app copy (`264df07`) and the recaptured media. The next commit only records this hash in this file.
 
 ## Official requirements (re-verified on https://icehacks.devpost.com/ today)
 | Requirement | Status |
